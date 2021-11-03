@@ -212,8 +212,8 @@ struct Login : View {
             if self.alert {
                 
                 ErrorView(alert: self.$alert, error: self.$error)
+                .background(Color.black.opacity(0.35).ignoresSafeArea(.all))
             }
-
         }
     }
     
@@ -398,6 +398,7 @@ struct SignUp : View {
             if self.alert {
                 
                 ErrorView(alert: self.$alert, error: self.$error)
+                .background(Color.black.opacity(0.35).edgesIgnoringSafeArea(.all))
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -441,46 +442,42 @@ struct ErrorView : View {
     
     var body : some View {
         
-        GeometryReader {_ in
+        VStack {
             
-            VStack {
+            HStack {
                 
-                HStack {
-                    
-                    Text(self.error == "RESET" ? "Message" : "Error")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(self.color)
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 25)
-                
-                Text(self.error == "RESET" ? "Password reset link has been sent" : self.error)
+                Text(self.error == "RESET" ? "Message" : "Error")
+                    .font(.title)
+                    .fontWeight(.bold)
                     .foregroundColor(self.color)
-                    .padding(.top)
-                    .padding(.horizontal, 25)
                 
-                Button(action: {
-                    
-                    self.alert.toggle()
-                    
-                }) {
-                    
-                    Text(self.error == "RESET" ? "Ok" : "Cancel")
-                        .foregroundColor(.white)
-                        .padding(.vertical)
-                        .frame(width: UIScreen.main.bounds.width - 120)
-                }
-                .background(Color("Color"))
-                .cornerRadius(10)
-                .padding(.top, 25)
+                Spacer()
             }
-            .padding(.vertical, 25)
-            .frame(width: UIScreen.main.bounds.width - 70)
-            .background(Color.white)
-            .cornerRadius(15)
+            .padding(.horizontal, 25)
+            
+            Text(self.error == "RESET" ? "Password reset link has been sent" : self.error)
+                .foregroundColor(self.color)
+                .padding(.top)
+                .padding(.horizontal, 25)
+            
+            Button(action: {
+                
+                self.alert.toggle()
+                
+            }) {
+                
+                Text(self.error == "RESET" ? "Ok" : "Cancel")
+                    .foregroundColor(.white)
+                    .padding(.vertical)
+                    .frame(width: UIScreen.main.bounds.width - 120)
+            }
+            .background(Color("Color"))
+            .cornerRadius(10)
+            .padding(.top, 25)
         }
-        .background(Color.black.opacity(0.35).edgesIgnoringSafeArea(.all))
+        .padding(.vertical, 25)
+        .frame(width: UIScreen.main.bounds.width - 70)
+        .background(Color.white)
+        .cornerRadius(15)
     }
 }
