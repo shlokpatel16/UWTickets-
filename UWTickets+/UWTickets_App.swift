@@ -9,6 +9,10 @@ import SwiftUI
 
 @main
 struct UWTickets_App: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    @ViewBuilder
     var body: some Scene {
         WindowGroup {
             ContentView()

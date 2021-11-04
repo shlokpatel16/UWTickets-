@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import Firebase
+import Firebase
 
 struct ContentView: View {
     var body: some View {
@@ -78,7 +78,7 @@ struct Homescreen : View {
             
             Button(action: {
                 
-//                try! Auth.auth().signOut()
+                try! Auth.auth().signOut()
                 UserDefaults.standard.set(false, forKey: "status")
                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
             }) {
@@ -167,7 +167,7 @@ struct Login : View {
                             
                             Button(action: {
                                 
-//                                self.reset()
+                                self.reset()
                                 
                             }) {
                                 
@@ -221,19 +221,19 @@ struct Login : View {
         
         if self.email != "" && self.pass != "" {
             
-//            //Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in
-//
-//                if err != nil {
-//
-//                    self.error = err!.localizedDescription
-//                    self.alert.toggle()
-//                    return
-//                }
-//
-//                print("success")
-//                UserDefaults.standard.set(true, forKey: "status")
-//                NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-//            }
+            Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in
+
+                if err != nil {
+
+                    self.error = err!.localizedDescription
+                    self.alert.toggle()
+                    return
+                }
+
+                print("success")
+                UserDefaults.standard.set(true, forKey: "status")
+                NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+            }
         }
         else {
             
@@ -242,29 +242,29 @@ struct Login : View {
         }
     }
 
-//    func reset() {
-//
-//        if self.email != "" {
-//
-//            Auth.auth().sendPasswordReset(withEmail: self.email) { (err) in
-//
-//                if err != nil {
-//
-//                    self.error = err!.localizedDescription
-//                    self.alert.toggle()
-//                    return
-//                }
-//
-//                self.error = "RESET"
-//                self.alert.toggle()
-//            }
-//        }
-//        else {
-//
-//            self.error = "Email ID is empty"
-//            self.alert.toggle()
-//        }
-//    }
+    func reset() {
+
+        if self.email != "" {
+
+            Auth.auth().sendPasswordReset(withEmail: self.email) { (err) in
+
+                if err != nil {
+
+                    self.error = err!.localizedDescription
+                    self.alert.toggle()
+                    return
+                }
+
+                self.error = "RESET"
+                self.alert.toggle()
+            }
+        }
+        else {
+
+            self.error = "Email ID is empty"
+            self.alert.toggle()
+        }
+    }
 }
 
 struct SignUp : View {
@@ -410,15 +410,15 @@ struct SignUp : View {
             
             if self.pass == self.repass {
                 
-//                Auth.auth().createUser(withEmail: self.email, password: self.pass) { (res, err) in
-//
-//                    if err != nil {
-//
-//                        self.error = err!.localizedDescription
-//                        self.alert.toggle()
-//                        return
-//                    }
-//                }
+                Auth.auth().createUser(withEmail: self.email, password: self.pass) { (res, err) in
+
+                    if err != nil {
+
+                        self.error = err!.localizedDescription
+                        self.alert.toggle()
+                        return
+                    }
+                }
             }
             else {
                 

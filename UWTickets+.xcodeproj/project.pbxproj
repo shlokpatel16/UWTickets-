@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8C35B7BA515559D81F77F98 /* Pods_UWTickets_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A68BF6F863BC659BA9C04C /* Pods_UWTickets_.framework */; };
+		DD149CFC273432EA0037B648 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD149CFB273432EA0037B648 /* AppDelegate.swift */; };
+		DD149CFE273435170037B648 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD149CFD273435170037B648 /* GoogleService-Info.plist */; };
 		DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEF5A32730915400F3FF10 /* UWTickets_App.swift */; };
 		DDFEF5A62730915400F3FF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEF5A52730915400F3FF10 /* ContentView.swift */; };
 		DDFEF5A82730915F00F3FF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFEF5A72730915F00F3FF10 /* Assets.xcassets */; };
@@ -14,12 +17,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		500763902F07510150E28A27 /* Pods-UWTickets+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWTickets+.release.xcconfig"; path = "Target Support Files/Pods-UWTickets+/Pods-UWTickets+.release.xcconfig"; sourceTree = "<group>"; };
+		D0A68BF6F863BC659BA9C04C /* Pods_UWTickets_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UWTickets_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD149CFB273432EA0037B648 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DD149CFD273435170037B648 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		DDFEF5A02730915400F3FF10 /* UWTickets+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UWTickets+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDFEF5A32730915400F3FF10 /* UWTickets_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWTickets_App.swift; sourceTree = "<group>"; };
 		DDFEF5A52730915400F3FF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DDFEF5A72730915F00F3FF10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDFEF5AA2730915F00F3FF10 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DDFEF5AC2730915F00F3FF10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1C6BE75EB5D21ECA29719B6 /* Pods-UWTickets+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWTickets+.debug.xcconfig"; path = "Target Support Files/Pods-UWTickets+/Pods-UWTickets+.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C35B7BA515559D81F77F98 /* Pods_UWTickets_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B31094D299EDD4CB3C460A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0A68BF6F863BC659BA9C04C /* Pods_UWTickets_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3BC4DB0B1992CB29E791D0F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1C6BE75EB5D21ECA29719B6 /* Pods-UWTickets+.debug.xcconfig */,
+				500763902F07510150E28A27 /* Pods-UWTickets+.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DDFEF5972730915400F3FF10 = {
 			isa = PBXGroup;
 			children = (
 				DDFEF5A22730915400F3FF10 /* UWTickets+ */,
 				DDFEF5A12730915400F3FF10 /* Products */,
+				3BC4DB0B1992CB29E791D0F3 /* Pods */,
+				2B31094D299EDD4CB3C460A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,7 +80,9 @@
 		DDFEF5A22730915400F3FF10 /* UWTickets+ */ = {
 			isa = PBXGroup;
 			children = (
+				DD149CFD273435170037B648 /* GoogleService-Info.plist */,
 				DDFEF5A32730915400F3FF10 /* UWTickets_App.swift */,
+				DD149CFB273432EA0037B648 /* AppDelegate.swift */,
 				DDFEF5A52730915400F3FF10 /* ContentView.swift */,
 				DDFEF5A72730915F00F3FF10 /* Assets.xcassets */,
 				DDFEF5AC2730915F00F3FF10 /* Info.plist */,
@@ -76,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDFEF5AF2730915F00F3FF10 /* Build configuration list for PBXNativeTarget "UWTickets+" */;
 			buildPhases = (
+				D33942BF90627857B5FB0698 /* [CP] Check Pods Manifest.lock */,
 				DDFEF59C2730915400F3FF10 /* Sources */,
 				DDFEF59D2730915400F3FF10 /* Frameworks */,
 				DDFEF59E2730915400F3FF10 /* Resources */,
+				DE914E5C71CCCB3FC0425147 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,16 +160,60 @@
 			files = (
 				DDFEF5AB2730915F00F3FF10 /* Preview Assets.xcassets in Resources */,
 				DDFEF5A82730915F00F3FF10 /* Assets.xcassets in Resources */,
+				DD149CFE273435170037B648 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D33942BF90627857B5FB0698 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UWTickets+-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE914E5C71CCCB3FC0425147 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UWTickets+/Pods-UWTickets+-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UWTickets+/Pods-UWTickets+-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UWTickets+/Pods-UWTickets+-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DDFEF59C2730915400F3FF10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD149CFC273432EA0037B648 /* AppDelegate.swift in Sources */,
 				DDFEF5A62730915400F3FF10 /* ContentView.swift in Sources */,
 				DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */,
 			);
@@ -264,6 +340,7 @@
 		};
 		DDFEF5B02730915F00F3FF10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1C6BE75EB5D21ECA29719B6 /* Pods-UWTickets+.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -285,6 +362,7 @@
 		};
 		DDFEF5B12730915F00F3FF10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 500763902F07510150E28A27 /* Pods-UWTickets+.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
