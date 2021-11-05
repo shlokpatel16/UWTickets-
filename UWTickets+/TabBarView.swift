@@ -58,7 +58,7 @@ struct TabBarView: View {
                     Image(systemName: "arrow.left.arrow.right.circle")
                     Text("Exchange")
                 }
-            Text("Settings")
+            SettingsView()
                 .tabItem{
                     Image(systemName: "gear")
                     Text("Settings")

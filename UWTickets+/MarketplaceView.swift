@@ -9,10 +9,24 @@ import SwiftUI
 
 struct MarketplaceView: View {
     var listings: [Listing]
+    var filterGames = ["All", "Penn State", "Eastern MI", "Notre Dame", "Michigan", "Illinois", "Army", "Purdue", "Iowa", "Rutgers", "Northwestern", "Nebraska", "Minnesota"]
+    @State private var filterGame = "All"
     var body: some View {
-        List(listings){
-            Listing in MarketplaceListing(itemForSale: Listing)
+        VStack{
+            HStack {
+                Text("Filter by opponent:")
+                Picker("Filter by opponent", selection: $filterGame) {
+                    ForEach(filterGames, id: \.self) {
+                        Text($0)
+                    }
+                }
+            }
+            List(listings){
+                Listing in MarketplaceListing(itemForSale: Listing)
+            }
         }
+        .padding(.vertical, 10)
+
     }
 }
 
@@ -25,8 +39,8 @@ struct MarketplaceListing: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 30, maxHeight: 30)
 //            Text(itemForSale.game)
-            Spacer()
-            Text(itemForSale.sellername)
+//            Spacer()
+            Text(itemForSale.sellername).font(.system(size: 15.0))
             Text(String(format: "$%.2f", itemForSale.askingPrice))
             Spacer()
             Button("Message") {
