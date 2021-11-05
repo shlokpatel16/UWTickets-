@@ -9,7 +9,16 @@ import SwiftUI
 
 struct ExchangeView: View {
     var body: some View {
-        Text("This is the Exchange View")
+        NavigationView {
+            VStack {
+                Text("Hi")
+                
+                
+                
+            }
+            .navigationBarTitle(Text("Exchange Area"))
+        }
+        
     }
 }
 

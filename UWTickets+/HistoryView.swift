@@ -9,23 +9,26 @@ import SwiftUI
 
 struct HistoryView: View {
     
-    var currentOffers : [offer]
+    var oldOffers : [oldOffer]
     var body: some View {
         NavigationView {
             VStack {
-                List(currentOffers) {
-                    offer in ListRow(eachOffer: offer)
+                List(oldOffers) {
+                    oldOffer in ListRow(eachOffer: oldOffer)
                 }
                 
-                Button("Back to Exchange View") {
-                    
+                NavigationLink(destination: ExchangeView()) {
+                    Button("Back to Exchange Area") {
+                        
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 5)
+                    .background(
+                        Capsule()
+                            .stroke(Color.gray)
+                    )
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 5)
-                .background(
-                    Capsule()
-                        .stroke(Color.gray)
-                )
+                
                 
             }
             .navigationBarTitle(Text("Offer History"))
@@ -35,7 +38,7 @@ struct HistoryView: View {
 }
 
 struct ListRow: View {
-    var eachOffer: offer
+    var eachOffer: oldOffer
     var body: some View {
 
             HStack {
@@ -53,7 +56,7 @@ struct ListRow: View {
     }
 }
 
-struct offer: Identifiable {
+struct oldOffer: Identifiable {
     var id : Int
     var name : String
     var sellingPrice : Double
@@ -62,14 +65,14 @@ struct offer: Identifiable {
 }
 
 let dummyData = [
-    offer(id : 1, name: "Penn State", sellingPrice: 30.00, buyingPrice: 30.00, average: 35.00 ),
-    offer(id : 2, name: "Michigan", sellingPrice: 25.00, buyingPrice: 30.00, average: 27.00 ),
-    offer(id : 3, name: "Northwestern", sellingPrice: 40.00, buyingPrice: 30.00, average: 35.00 ),
-    offer(id : 4, name: "Purdue", sellingPrice: 40.00, buyingPrice: 30.00, average: 35.00 ),
-    offer(id : 5, name: "Illinois", sellingPrice: 40.00, buyingPrice: 30.00, average: 35.00 )]
+    oldOffer(id : 1, name: "Penn State", sellingPrice: 30.00, buyingPrice: 30.00, average: 35.00 ),
+    oldOffer(id : 2, name: "Michigan", sellingPrice: 25.00, buyingPrice: 30.00, average: 27.00 ),
+    oldOffer(id : 3, name: "Northwestern", sellingPrice: 40.00, buyingPrice: 30.00, average: 35.00 ),
+    oldOffer(id : 4, name: "Purdue", sellingPrice: 40.00, buyingPrice: 30.00, average: 35.00 ),
+    oldOffer(id : 5, name: "Illinois", sellingPrice: 40.00, buyingPrice: 30.00, average: 35.00 )]
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView(currentOffers : dummyData)
+        HistoryView(oldOffers : dummyData)
     }
 }
