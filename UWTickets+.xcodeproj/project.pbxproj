@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F3052262734F25000F8E772 /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3052252734F24F00F8E772 /* MarketplaceView.swift */; };
+		3FEAD0E92735C77A00D3DCF6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAD0E82735C77A00D3DCF6 /* SettingsView.swift */; };
 		66A541D027346B3F0054CA53 /* PersonalHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */; };
 		66A541D22734AB870054CA53 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541D12734AB870054CA53 /* TabBarView.swift */; };
 		DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEF5A32730915400F3FF10 /* UWTickets_App.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		3F3052252734F24F00F8E772 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
+		3FEAD0E82735C77A00D3DCF6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHomeView.swift; sourceTree = "<group>"; };
 		66A541D12734AB870054CA53 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		DDFEF5A02730915400F3FF10 /* UWTickets+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UWTickets+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 				66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */,
 				3F3052252734F24F00F8E772 /* MarketplaceView.swift */,
 				66A541D12734AB870054CA53 /* TabBarView.swift */,
+				3FEAD0E82735C77A00D3DCF6 /* SettingsView.swift */,
 			);
 			path = "UWTickets+";
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				DDFEF5A62730915400F3FF10 /* ContentView.swift in Sources */,
 				66A541D027346B3F0054CA53 /* PersonalHomeView.swift in Sources */,
 				3F3052262734F25000F8E772 /* MarketplaceView.swift in Sources */,
+				3FEAD0E92735C77A00D3DCF6 /* SettingsView.swift in Sources */,
 				66A541D22734AB870054CA53 /* TabBarView.swift in Sources */,
 				DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */,
 			);
