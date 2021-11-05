@@ -24,13 +24,26 @@ struct TabBarView: View {
             game(id: 12, name: "@Minnesota", logo: "MinnesotaLogo")
         ]
         
+        var mockMarketplaceData = [
+            Listing(id:1, sellername: "sampleuser1", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 40.00),
+            Listing(id:2, sellername: "sampleuser2", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 50.00),
+            Listing(id:3, sellername: "sampleuser3", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 35.00),
+            Listing(id:4, sellername: "sampleuser4", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 65.00),
+            Listing(id:5, sellername: "sampleuser5", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 40.00),
+            Listing(id:6, sellername: "sampleuser6", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 45.00),
+            Listing(id:7, sellername: "sampleuser7", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 55.00),
+            Listing(id:8, sellername: "sampleuser8", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 60.00),
+            Listing(id:9, sellername: "sampleuser9", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 50.00),
+            Listing(id:10, sellername: "sampleuser10", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 59.00)
+        ]
+        
         TabView {
             PersonalHomeView(gamesToPlay: games)
                 .tabItem{
                     Image(systemName: "house")
                     Text("Home")
                 }
-            Text("Market")
+            MarketplaceView(listings: mockMarketplaceData)
                 .tabItem{
                     Image(systemName: "cart")
                     Text("Market")

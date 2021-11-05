@@ -34,7 +34,7 @@ struct Home : View {
                 
                 if self.status {
                     
-                    Homescreen()
+                    TabBarView()
                     
                 } else {
                     

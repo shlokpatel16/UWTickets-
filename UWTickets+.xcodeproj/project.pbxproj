@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F3052262734F25000F8E772 /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3052252734F24F00F8E772 /* MarketplaceView.swift */; };
 		66A541D027346B3F0054CA53 /* PersonalHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */; };
 		66A541D22734AB870054CA53 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541D12734AB870054CA53 /* TabBarView.swift */; };
 		DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEF5A32730915400F3FF10 /* UWTickets_App.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F3052252734F24F00F8E772 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
 		66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHomeView.swift; sourceTree = "<group>"; };
 		66A541D12734AB870054CA53 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		DDFEF5A02730915400F3FF10 /* UWTickets+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UWTickets+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +64,7 @@
 				DDFEF5AC2730915F00F3FF10 /* Info.plist */,
 				DDFEF5A92730915F00F3FF10 /* Preview Content */,
 				66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */,
+				3F3052252734F24F00F8E772 /* MarketplaceView.swift */,
 				66A541D12734AB870054CA53 /* TabBarView.swift */,
 			);
 			path = "UWTickets+";
@@ -146,6 +149,7 @@
 			files = (
 				DDFEF5A62730915400F3FF10 /* ContentView.swift in Sources */,
 				66A541D027346B3F0054CA53 /* PersonalHomeView.swift in Sources */,
+				3F3052262734F25000F8E772 /* MarketplaceView.swift in Sources */,
 				66A541D22734AB870054CA53 /* TabBarView.swift in Sources */,
 				DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */,
 			);
