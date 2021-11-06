@@ -11,13 +11,13 @@ struct PersonalHomeView: View {
     var gamesToPlay: [game]
     var body: some View {
         List(gamesToPlay) {
-            game in ListRow(eachGame: game)
+            game in ChatListRow(eachGame: game)
         }
 
     }
 }
 
-struct ListRow: View {
+struct ChatListRow: View {
     var eachGame: game
     var body: some View {
         HStack {
