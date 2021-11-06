@@ -21,6 +21,7 @@ struct messages: View {
             Spacer()
         }.background(Color.white)
         .edgesIgnoringSafeArea(.all)
+        .padding(.bottom, 10)
     }
 }
 
@@ -76,7 +77,7 @@ struct TopView: View {
                 
                 TextField("Search", text: $search)
             }.padding()
-                .background(Color.red.opacity(0.5))
+                .background(Color.white)
                 .cornerRadius(10)
                 .padding(.bottom, 10)
             
@@ -119,6 +120,8 @@ struct cellView : View {
                 
             }
         }.padding(.vertical)
+        
+
     }
 }
 struct shape: Shape {
