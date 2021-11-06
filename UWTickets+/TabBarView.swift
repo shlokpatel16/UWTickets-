@@ -48,12 +48,12 @@ struct TabBarView: View {
                     Image(systemName: "cart")
                     Text("Market")
                 }
-            Text("Chat")
+            ChatView()
                 .tabItem{
                     Image(systemName: "message")
                     Text("Chat")
                 }
-            Text("Exchange")
+            ExchangeView()
                 .tabItem{
                     Image(systemName: "arrow.left.arrow.right.circle")
                     Text("Exchange")
