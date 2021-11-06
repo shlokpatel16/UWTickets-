@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		66A541D027346B3F0054CA53 /* PersonalHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */; };
 		66A541D22734AB870054CA53 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541D12734AB870054CA53 /* TabBarView.swift */; };
+		66A541D62735F9C20054CA53 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541D52735F9C20054CA53 /* ChatView.swift */; };
 		DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEF5A32730915400F3FF10 /* UWTickets_App.swift */; };
 		DDFEF5A62730915400F3FF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEF5A52730915400F3FF10 /* ContentView.swift */; };
 		DDFEF5A82730915F00F3FF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFEF5A72730915F00F3FF10 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHomeView.swift; sourceTree = "<group>"; };
 		66A541D12734AB870054CA53 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		66A541D52735F9C20054CA53 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		DDFEF5A02730915400F3FF10 /* UWTickets+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UWTickets+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDFEF5A32730915400F3FF10 /* UWTickets_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWTickets_App.swift; sourceTree = "<group>"; };
 		DDFEF5A52730915400F3FF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				DDFEF5A92730915F00F3FF10 /* Preview Content */,
 				66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */,
 				66A541D12734AB870054CA53 /* TabBarView.swift */,
+				66A541D52735F9C20054CA53 /* ChatView.swift */,
 			);
 			path = "UWTickets+";
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				DDFEF5A62730915400F3FF10 /* ContentView.swift in Sources */,
 				66A541D027346B3F0054CA53 /* PersonalHomeView.swift in Sources */,
+				66A541D62735F9C20054CA53 /* ChatView.swift in Sources */,
 				66A541D22734AB870054CA53 /* TabBarView.swift in Sources */,
 				DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */,
 			);
