@@ -26,7 +26,7 @@ struct ExchangeView: View {
                 
                 NavigationLink(destination: HistoryView(oldOffers: dummyData)) {
                     
-                    Button("Go to Current Offers Area") {
+                    Button("Go to History Area") {
                         
                     }
                     .padding(.horizontal, 20)
