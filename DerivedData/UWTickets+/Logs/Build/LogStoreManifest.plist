@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>F0D8102C-ED7D-4E4B-8D1F-DD871DC09003</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F0D8102C-ED7D-4E4B-8D1F-DD871DC09003.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>UWTickets+ project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>UWTickets+</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build UWTickets+</string>
+			<key>timeStartedRecording</key>
+			<real>658773296.55955303</real>
+			<key>timeStoppedRecording</key>
+			<real>658773297.30807304</real>
+			<key>title</key>
+			<string>Build UWTickets+</string>
+			<key>uniqueIdentifier</key>
+			<string>F0D8102C-ED7D-4E4B-8D1F-DD871DC09003</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
