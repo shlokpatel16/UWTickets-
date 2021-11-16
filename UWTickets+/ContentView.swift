@@ -24,7 +24,8 @@ struct ContentView_Previews: PreviewProvider {
 struct Home : View {
     
     @State var show = false
-    @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+//    @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+    @State var status = true
     
     var body : some View {
         
@@ -34,7 +35,7 @@ struct Home : View {
                 
                 if self.status {
                     
-                    Homescreen()
+                    TabBarView()
                     
                 } else {
                     
