@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseAuth
 
 struct PersonalHomeView: View {
     var gamesToPlay: [game]
@@ -20,12 +19,6 @@ struct PersonalHomeView: View {
 
 struct ChatListRow: View {
     var eachGame: game
-    @State var nativeAlert = false
-    @State var customAlert = false
-    @State var dollars = ""
-    @State private var showingSheet = false
-
-    
     var body: some View {
         HStack {
             Image(eachGame.logo)
@@ -35,13 +28,8 @@ struct ChatListRow: View {
             Text(eachGame.name)
             Spacer()
             Button("Buy") {
-                withAnimation{
-                    buy()
-                }
-                showingSheet.toggle()
-                print("buy")
+                
             }
-            .buttonStyle(BorderlessButtonStyle())
             .accentColor(.green)
             .padding(.horizontal, 20)
             .padding(.vertical, 5)
@@ -49,17 +37,10 @@ struct ChatListRow: View {
                 Capsule()
                     .stroke(Color.green, lineWidth: 1.0)
             )
-            .sheet(isPresented: $showingSheet) {
-                MarketplaceView(listings: mockMarketplaceData)
-            }
             
             Button("Sell") {
-                withAnimation{
-                    sell()
-                }
-                print("sell")
+                
             }
-            .buttonStyle(BorderlessButtonStyle())
             .accentColor(.red)
             .padding(.horizontal, 20)
             .padding(.vertical, 5)
@@ -69,33 +50,7 @@ struct ChatListRow: View {
             )
         }
     }
-    func sell(){
-        let alert = UIAlertController(title: "Sell Ticket", message: "Please enter the dollar amount you are selling this ticket for: $", preferredStyle: .alert)
-        alert.addTextField {(dollars) in
-            dollars.placeholder = "ex. \"50\""
-            
-        }
-        let sell = UIAlertAction(title: "Post Offer", style: .default) { _ in
-            dollars = alert.textFields![0].text!
-            print(dollars)
-            print(eachGame.name)
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
-            
-        }
-        alert.addAction(cancel)
-        alert.addAction(sell)
-        print(dollars)
-        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: {
-            
-        })
-
-    }
-    func buy(){
-        MarketplaceView(listings: mockMarketplaceData)
-    }
 }
-
 
 struct game: Identifiable {
     var id: Int

@@ -24,7 +24,7 @@ struct TabBarView: View {
             game(id: 12, name: "@Minnesota", logo: "MinnesotaLogo")
         ]
         
-        let mockMarketplaceData = [
+        var mockMarketplaceData = [
             Listing(id:1, sellername: "sampleuser1", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 40.00),
             Listing(id:2, sellername: "sampleuser2", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 50.00),
             Listing(id:3, sellername: "sampleuser3", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 35.00),
