@@ -1,6 +1,0 @@
-framework module Pods_UWTickets_ {
-  umbrella header "Pods-UWTickets+-umbrella.h"
-
-  export *
-  module * { export * }
-}

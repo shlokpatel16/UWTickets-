@@ -7,6 +7,9 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseDatabase
+
+let database = Database.database().reference()
 
 struct PersonalHomeView: View {
     var gamesToPlay: [game]
@@ -79,6 +82,7 @@ struct ChatListRow: View {
             dollars = alert.textFields![0].text!
             print(dollars)
             print(eachGame.name)
+            database.child("Tickets").child(eachGame.name).setValue(["Price": dollars])
         }
         let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
             
