@@ -42,34 +42,44 @@ struct CurrentList {
 
 
 struct ExchangeView: View {
-    var body: some View {
+    @State var isModal: Bool = false;
+      var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: OffersView()) {
+
                     Button("Go to Current Offers Area") {
-                        
-                    }
+                        self.isModal = true;
+                    }.sheet(isPresented: $isModal, content: {
+                        OffersView()
+                    })
                     .padding(.horizontal, 20)
                     .padding(.vertical, 5)
-                    .background(
-                        Capsule()
-                            .stroke(Color.gray)
-                    )
+                    .foregroundColor(Color.black)
+                    .background(Color.blue)
+                    
                 
-                }
+                
                 NavigationLink(destination: HistoryView()) {
                     
                     Button("Go to History Area") {
                         
                     }
                     .padding(.horizontal, 20)
-                    .padding(.vertical, 5)
-                    .background(
-                        Capsule()
-                            .stroke(Color.gray)
-                    )
+                    .foregroundColor(Color.black)         .padding(.vertical, 5)
+                    .background(Color.blue)
                 }
-            }
+
+                Text("Buyer Name: ")
+                Text("Ticket Price:")
+                
+                Button("Make Offer") {
+                    
+                }
+                .padding(.trailing, 20)
+                .padding(.vertical, 5)
+                .foregroundColor(Color.black)
+                
+                .background(Color.green)            }
             .navigationBarTitle(Text("Exchange Area"))
         }
         
