@@ -8,14 +8,38 @@
 import SwiftUI
 
 struct OffersView: View {
-    var currentOffers : [currentOffer]    
+    var currentOffers : [currentOffer] = CurrentList.currentDummyData
     var body: some View {
-    NavigationView {
-        VStack {
-            List(currentOffers) {
-                currentOffer in currentListRow(eachOffer: currentOffer)
-            }
-            
+        NavigationView {
+            VStack {
+                List(currentOffers, id: \.id) {item in
+                    HStack() {
+                        Text(item.name)
+                        Text("Offer Price: " + String(item.offerPrice))
+                            .font(.subheadline)
+                            .foregroundColor(Color.red)
+                        Text("Sell Price: " + String(item.sellingPrice))
+                            .font(.subheadline)
+                            .foregroundColor(Color.blue)
+                        Button("Confirm") {
+                        }
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 5)
+                        .background(
+                            Capsule()
+                                .stroke(Color.gray)
+                        )
+                        
+                        Button("Decline") {
+                        }
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 5)
+                        .background(
+                            Capsule()
+                                .stroke(Color.gray)
+                        )
+                    }
+                }
             NavigationLink(destination: ExchangeView()) {
                 Button("Back to Exchange Area") {
                     
@@ -31,9 +55,10 @@ struct OffersView: View {
             
         }
         .navigationBarTitle(Text("All Current Offers"))
-    }
+            }
     }
 }
+    /*
 struct currentListRow: View {
     var eachOffer: currentOffer
     var body: some View {
@@ -69,23 +94,11 @@ struct currentListRow: View {
         
     }
 }
-
-struct currentOffer: Identifiable {
-    var id : Int
-    var name : String
-    var sellingPrice : Double
-    var offerPrice : Double
-}
-
-let dummyDataExchange = [
-    currentOffer(id : 1, name: "Penn State", sellingPrice: 30.00, offerPrice: 30.00),
-    currentOffer(id : 2, name: "Michigan", sellingPrice: 25.00, offerPrice: 30.00),
-    currentOffer(id : 3, name: "Northwestern", sellingPrice: 40.00, offerPrice: 30.00),
-    currentOffer(id : 4, name: "Purdue", sellingPrice: 40.00, offerPrice: 30.00),
-    currentOffer(id : 5, name: "Illinois", sellingPrice: 40.00, offerPrice: 30.00)]
+     */
 
 struct OffersView_Previews: PreviewProvider {
     static var previews: some View {
-        OffersView(currentOffers : dummyDataExchange)
+        OffersView()
     }
 }
+
