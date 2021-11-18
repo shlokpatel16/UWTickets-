@@ -11,7 +11,15 @@ struct MarketplaceView: View {
     var listings: [Listing]
     var filterGames = ["All", "Penn State", "Eastern MI", "Notre Dame", "Michigan", "Illinois", "Army", "Purdue", "Iowa", "Rutgers", "Northwestern", "Nebraska", "Minnesota"]
     @State private var filterGame = "All"
+    
     var body: some View {
+        let filteredListings = listings.filter { listing in
+            if filterGame == "All" {
+                return true
+            }
+            return listing.game == filterGame
+        }
+
         VStack{
             HStack {
                 Text("Filter by opponent:")
@@ -21,13 +29,24 @@ struct MarketplaceView: View {
                     }
                 }
             }
-            List(listings){
-                Listing in MarketplaceListing(itemForSale: Listing)
+            Text(String(format: "Average asking price: $%.2f", getAveragePrice(listings: filteredListings)))
+            List{
+                ForEach(listings.filter {$0.game == filterGame || filterGame == "All"}) {
+                    Listing in MarketplaceListing(itemForSale: Listing)
+                }
             }
         }
         .padding(.vertical, 10)
 
     }
+}
+
+func getAveragePrice(listings: [Listing]) -> Double {
+    var totalPrice = 0.00
+    for listing in listings {
+        totalPrice += listing.askingPrice
+    }
+    return totalPrice / Double(listings.count)
 }
 
 struct MarketplaceListing: View {

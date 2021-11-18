@@ -1,0 +1,16 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "af61e8802eb1b481d9fe91afefb9283909ea183922309d4fb8ab975438446f46"
+build_start_time: [1637095731, 97621917]
+build_end_time: [1637095732, 772361040]
+inputs:
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/AppDelegate.swift": [1636039745, 0]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/ChatView.swift": [1637094948, 901232242]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/ContentView.swift": [1637095725, 788551568]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/ExchangeView.swift": [1637094948, 901470184]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/HistoryView.swift": [1637094948, 901746034]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/MarketplaceView.swift": [1637094948, 901978969]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/OffersView.swift": [1637094948, 902164936]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/PersonalHomeView.swift": [1637094948, 902371644]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/SettingsView.swift": [1637094948, 902622222]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/TabBarView.swift": [1637094948, 902974128]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/UWTickets_App.swift": [1636039742, 0]

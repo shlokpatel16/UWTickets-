@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>1AAC24A3-624A-4958-972D-49BFF144A5F0</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>1AAC24A3-624A-4958-972D-49BFF144A5F0.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>UWTickets+ project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>UWTickets+</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build UWTickets+</string>
+			<key>timeStartedRecording</key>
+			<real>658787994.738469</real>
+			<key>timeStoppedRecording</key>
+			<real>658788002.68882895</real>
+			<key>title</key>
+			<string>Build UWTickets+</string>
+			<key>uniqueIdentifier</key>
+			<string>1AAC24A3-624A-4958-972D-49BFF144A5F0</string>
+		</dict>
+		<key>1D3B4748-29C0-4752-BED8-8260C7491E95</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>1D3B4748-29C0-4752-BED8-8260C7491E95.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>UWTickets+ project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>UWTickets+</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build UWTickets+</string>
+			<key>timeStartedRecording</key>
+			<real>658788530.83325601</real>
+			<key>timeStoppedRecording</key>
+			<real>658788533.07781005</real>
+			<key>title</key>
+			<string>Build UWTickets+</string>
+			<key>uniqueIdentifier</key>
+			<string>1D3B4748-29C0-4752-BED8-8260C7491E95</string>
+		</dict>
+		<key>AFA7501D-C0F0-40EB-B5F6-55CDB8E0431D</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>AFA7501D-C0F0-40EB-B5F6-55CDB8E0431D.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>UWTickets+ project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>UWTickets+</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build UWTickets+</string>
+			<key>timeStartedRecording</key>
+			<real>658788175.08780098</real>
+			<key>timeStoppedRecording</key>
+			<real>658788177.24212396</real>
+			<key>title</key>
+			<string>Build UWTickets+</string>
+			<key>uniqueIdentifier</key>
+			<string>AFA7501D-C0F0-40EB-B5F6-55CDB8E0431D</string>
+		</dict>
+		<key>CED1364A-9805-4EEA-9A5B-50302B5FA381</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CED1364A-9805-4EEA-9A5B-50302B5FA381.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>UWTickets+ project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>UWTickets+</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build UWTickets+</string>
+			<key>timeStartedRecording</key>
+			<real>658787928.740628</real>
+			<key>timeStoppedRecording</key>
+			<real>658787930.34585297</real>
+			<key>title</key>
+			<string>Build UWTickets+</string>
+			<key>uniqueIdentifier</key>
+			<string>CED1364A-9805-4EEA-9A5B-50302B5FA381</string>
+		</dict>
+		<key>E9997989-6047-4317-9524-BECB9D45E296</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E9997989-6047-4317-9524-BECB9D45E296.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>UWTickets+ project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>UWTickets+</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build UWTickets+</string>
+			<key>timeStartedRecording</key>
+			<real>658788085.73934698</real>
+			<key>timeStoppedRecording</key>
+			<real>658788092.81125104</real>
+			<key>title</key>
+			<string>Build UWTickets+</string>
+			<key>uniqueIdentifier</key>
+			<string>E9997989-6047-4317-9524-BECB9D45E296</string>
+		</dict>
+		<key>F0D8102C-ED7D-4E4B-8D1F-DD871DC09003</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F0D8102C-ED7D-4E4B-8D1F-DD871DC09003.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>UWTickets+ project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>UWTickets+</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build UWTickets+</string>
+			<key>timeStartedRecording</key>
+			<real>658773296.55955303</real>
+			<key>timeStoppedRecording</key>
+			<real>658773297.30807304</real>
+			<key>title</key>
+			<string>Build UWTickets+</string>
+			<key>uniqueIdentifier</key>
+			<string>F0D8102C-ED7D-4E4B-8D1F-DD871DC09003</string>
+		</dict>
+		<key>F69293BB-3A43-46CC-B5FC-A18AB33F0803</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F69293BB-3A43-46CC-B5FC-A18AB33F0803.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>UWTickets+ project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>UWTickets+</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build for Previews UWTickets+</string>
+			<key>timeStartedRecording</key>
+			<real>658788062.25171995</real>
+			<key>timeStoppedRecording</key>
+			<real>658788085.75781703</real>
+			<key>title</key>
+			<string>Build for Previews UWTickets+</string>
+			<key>uniqueIdentifier</key>
+			<string>F69293BB-3A43-46CC-B5FC-A18AB33F0803</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

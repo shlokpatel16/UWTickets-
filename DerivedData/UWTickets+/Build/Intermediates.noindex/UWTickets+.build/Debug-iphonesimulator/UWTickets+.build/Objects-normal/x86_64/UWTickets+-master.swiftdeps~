@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "af61e8802eb1b481d9fe91afefb9283909ea183922309d4fb8ab975438446f46"
+build_start_time: [1636040820, 30095100]
+build_end_time: [1636040821, 716167926]
+inputs:
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/AppDelegate.swift": [1636039745, 446828842]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/ContentView.swift": [1636040791, 275877475]
+  "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+/UWTickets_App.swift": [1636039742, 866978168]

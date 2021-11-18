@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>FirebasePerformance</string>
+	<string>SafariServices</string>
+	<string>FirebaseDynamicLinks</string>
+	<string>objc</string>
+	<string>FirebaseInstallations</string>
+	<string>FirebaseAuth</string>
+	<string>GoogleUtilities</string>
+	<string>Firebase</string>
+	<string>GoogleDataTransport</string>
+	<string>FirebaseAppCheck</string>
+	<string>FirebaseInAppMessaging</string>
+	<string>FirebaseMessaging</string>
+	<string>FirebaseCore</string>
+	<string>FirebaseCrashlytics</string>
+	<string>sys</string>
+	<string>GTMSessionFetcher</string>
+	<string>CoreTelephony</string>
+	<string>nanopb</string>
+	<string>dispatch</string>
+	<string>FirebaseFirestore</string>
+	<string>FirebaseDatabase</string>
+	<string>FBLPromises</string>
+	<string>SwiftUI</string>
+	<string>FirebaseRemoteConfig</string>
+	<string>WebKit</string>
+	<string>WatchKit</string>
+	<string>Foundation</string>
+	<string>Security</string>
+	<string>AppKit</string>
+	<string>GameKit</string>
+	<string>netinet</string>
+	<string>FirebaseStorage</string>
+	<string>SystemConfiguration</string>
+	<string>FirebaseFunctions</string>
+	<string>FirebaseAnalytics</string>
+	<string>GTMSessionFetcherCore</string>
+	<string>FirebaseAppDistribution</string>
+	<string>UIKit</string>
+</array>
+</plist>

@@ -1,0 +1,59 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "39e70aa36e73e3380a727d560c23c92d4df5dedcbf4e416582f8dbe471322f25"
+    }
+  ],
+  "containerPath" : "/Users/jacobsweis/Downloads/UWTickets+/UWTickets+.xcworkspace",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "x86_64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator15.0",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "x86_64"
+      ],
+      "targetArchitecture" : "x86_64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/jacobsweis/Downloads/UWTickets+/DerivedData/UWTickets+/Index/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/jacobsweis/Downloads/UWTickets+/DerivedData/UWTickets+/Index/Build/Products",
+      "derivedDataPath" : "/Users/jacobsweis/Downloads/UWTickets+/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/jacobsweis/Downloads/UWTickets+/DerivedData/UWTickets+/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/jacobsweis/Downloads/UWTickets+/DerivedData/UWTickets+/Index/PrecompiledHeaders",
+      "pchPath" : "/Users/jacobsweis/Downloads/UWTickets+/DerivedData/UWTickets+/Index/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "INDEX_ARENA_INFO_REGULAR_BUILD_PRODUCTS_DIR" : "/Users/jacobsweis/Downloads/UWTickets+/DerivedData/UWTickets+/Build/Products",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
