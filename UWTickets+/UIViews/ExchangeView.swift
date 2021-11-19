@@ -12,16 +12,16 @@ struct ExchangeView: View {
         NavigationView {
             VStack {
                 NavigationLink(destination: OffersView(currentOffers: dummyDataExchange)) {
-                    
-                    Button("Go to Current Offers Area") {
-                        
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 5)
-                    .background(
-                        Capsule()
-                            .stroke(Color.gray)
-                    )
+                    Text("go to current offers area")
+//                    Button("Go to Current Offers Area") {
+//
+//                    }
+//                    .padding(.horizontal, 20)
+//                    .padding(.vertical, 5)
+//                    .background(
+//                        Capsule()
+//                            .stroke(Color.gray)
+//                    )
                 }
                 
                 NavigationLink(destination: HistoryView(oldOffers: dummyData)) {
