@@ -43,7 +43,7 @@ struct ExchangeView2: View {
                                 
                         }
                         
-                    }.offset(y: -100)
+                    }.offset(y: -50)
                     Text("Make an Offer")
                         .fontWeight(.semibold)
                         .font(.title2)
