@@ -25,7 +25,6 @@ struct Home : View {
     
     @State var show = false
     @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
-    //@State var status = true
     
     var body : some View {
         
@@ -65,36 +64,6 @@ struct Home : View {
         }
     }
 }
-
-//struct Homescreen : View {
-//
-//    var body : some View {
-//
-//        VStack {
-//
-//            Text("Logged on")
-//                .font(.title)
-//                .fontWeight(.bold)
-//                .foregroundColor(.black.opacity(0.7))
-//
-//            Button(action: {
-//
-//                try! Auth.auth().signOut()
-//                UserDefaults.standard.set(false, forKey: "status")
-//                NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-//            }) {
-//
-//                Text("Log out")
-//                    .foregroundColor(.white)
-//                    .padding(.vertical)
-//                    .frame(width: UIScreen.main.bounds.width - 50)
-//            }
-//            .background(Color("Color"))
-//            .cornerRadius(10)
-//            .padding(.top, 25)
-//        }
-//    }
-//}
 
 struct Login : View {
     
