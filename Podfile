@@ -7,5 +7,8 @@ target 'UWTickets+' do
 
   # Pods for UWTickets+
 pod 'Firebase/Auth'
+pod 'Firebase/Analytics'
+pod 'Firebase/Core'
+pod 'Firebase/Database'
 
 end

@@ -7,6 +7,9 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseDatabase
+
+let database = Database.database().reference()
 
 struct PersonalHomeView: View {
     var gamesToPlay: [game]
@@ -24,7 +27,6 @@ struct ChatListRow: View {
     @State var customAlert = false
     @State var dollars = ""
     @State private var showingSheet = false
-
     
     var body: some View {
         HStack {
@@ -50,7 +52,7 @@ struct ChatListRow: View {
                     .stroke(Color.green, lineWidth: 1.0)
             )
             .sheet(isPresented: $showingSheet) {
-                MarketplaceView(listings: mockMarketplaceData)
+                MarketplaceView(listings: [])
             }
             
             Button("Sell") {
@@ -77,8 +79,7 @@ struct ChatListRow: View {
         }
         let sell = UIAlertAction(title: "Post Offer", style: .default) { _ in
             dollars = alert.textFields![0].text!
-            print(dollars)
-            print(eachGame.name)
+            database.child("Marketplace").childByAutoId().setValue(["sellername": Auth.auth().currentUser?.email! ?? "", "game": eachGame.name, "logo": eachGame.logo, "askingPrice": dollars])
         }
         let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
             
@@ -92,7 +93,7 @@ struct ChatListRow: View {
 
     }
     func buy(){
-        MarketplaceView(listings: mockMarketplaceData)
+        MarketplaceView(listings: [])
     }
 }
 

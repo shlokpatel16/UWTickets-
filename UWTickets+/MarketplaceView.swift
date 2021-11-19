@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
 
 struct MarketplaceView: View {
-    var listings: [Listing]
     var filterGames = ["All", "Penn State", "Eastern MI", "Notre Dame", "Michigan", "Illinois", "Army", "Purdue", "Iowa", "Rutgers", "Northwestern", "Nebraska", "Minnesota"]
     @State private var filterGame = "All"
+    @State var listings: [Listing]? = []
     
     var body: some View {
-        let filteredListings = listings.filter { listing in
+        let filteredListings = listings!.filter { listing in
             if filterGame == "All" {
                 return true
             }
@@ -29,22 +30,51 @@ struct MarketplaceView: View {
                     }
                 }
             }
-            Text(String(format: "Average asking price: $%.2f", getAveragePrice(listings: filteredListings)))
+            Text("Average asking price: \(getAveragePrice(listings: filteredListings).isNaN ? 0: getAveragePrice(listings: filteredListings), specifier: "$%.2f")")
             List{
-                ForEach(listings.filter {$0.game == filterGame || filterGame == "All"}) {
+                ForEach(listings!.filter {$0.game == filterGame || filterGame == "All"}) {
                     Listing in MarketplaceListing(itemForSale: Listing)
                 }
             }
+        }.onAppear() {
+            self.getMarketplace()
         }
         .padding(.vertical, 10)
 
     }
+    
+    func getMarketplace() {
+        var listingSet = [Listing]()
+        let ref = Database.database().reference()
+        ref.child("Marketplace").observeSingleEvent(of: .value) { (snapshot) in
+            let marketplace: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+            for listing in marketplace {
+                listingSet.append(
+                    Listing(
+                        id: listing.key,
+                        sellername: listing.value["sellername"] as! String,
+                        game: listing.value["game"] as! String,
+                        logo: listing.value["logo"] as! String,
+                        askingPrice: listing.value["askingPrice"] as! String
+                    )
+                )
+            }
+            self.listings = listingSet
+
+        }
+    }
+    
 }
+
+
+
+
+
 
 func getAveragePrice(listings: [Listing]) -> Double {
     var totalPrice = 0.00
     for listing in listings {
-        totalPrice += listing.askingPrice
+        totalPrice += Double(listing.askingPrice)!
     }
     return totalPrice / Double(listings.count)
 }
@@ -60,7 +90,9 @@ struct MarketplaceListing: View {
 //            Text(itemForSale.game)
 //            Spacer()
             Text(itemForSale.sellername).font(.system(size: 15.0))
-            Text(String(format: "$%.2f", itemForSale.askingPrice))
+            Spacer()
+            let askingPriceDouble = Double(itemForSale.askingPrice)
+            Text("\(askingPriceDouble!, specifier: "$%.2f")")
             Spacer()
             Button("Message") {
                 
@@ -78,29 +110,16 @@ struct MarketplaceListing: View {
 }
 
 struct Listing: Identifiable {
-    var id: Int
+    var id: String
     var sellername: String
     var game: String
     var logo: String
-    var listed: Date
-    var askingPrice: Double
+//    var listed: String
+    var askingPrice: String
 }
-
-var mockMarketplaceData = [
-    Listing(id:1, sellername: "sampleuser1", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 40.00),
-    Listing(id:2, sellername: "sampleuser2", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 50.00),
-    Listing(id:3, sellername: "sampleuser3", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 35.00),
-    Listing(id:4, sellername: "sampleuser4", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 65.00),
-    Listing(id:5, sellername: "sampleuser5", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 40.00),
-    Listing(id:6, sellername: "sampleuser6", game: "Northwestern", logo: "NorthwesternLogo", listed: Date(), askingPrice: 45.00),
-    Listing(id:7, sellername: "sampleuser7", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 55.00),
-    Listing(id:8, sellername: "sampleuser8", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 60.00),
-    Listing(id:9, sellername: "sampleuser9", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 50.00),
-    Listing(id:10, sellername: "sampleuser10", game: "Nebraska", logo: "NebraskaLogo", listed: Date(), askingPrice: 59.00)
-]
 
 struct MarketplaceView_Previews: PreviewProvider {
     static var previews: some View {
-        MarketplaceView(listings: mockMarketplaceData)
+        MarketplaceView(listings: [])
     }
 }
