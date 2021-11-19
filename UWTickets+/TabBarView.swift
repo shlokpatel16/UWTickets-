@@ -41,7 +41,7 @@ struct TabBarView: View {
                     Image(systemName: "message")
                     Text("Chat")
                 }
-            ExchangeView()
+            ExchangeView2()
                 .tabItem{
                     Image(systemName: "arrow.left.arrow.right.circle")
                     Text("Exchange")
