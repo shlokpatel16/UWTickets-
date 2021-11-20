@@ -52,6 +52,7 @@ struct TabBarView: View {
                     Text("Settings")
                 }
         }.accentColor(.red)
+        }
     }
 }
 
