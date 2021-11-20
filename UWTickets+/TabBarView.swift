@@ -51,7 +51,7 @@ struct TabBarView: View {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
-        }
+        }.accentColor(.red)
     }
 }
 
