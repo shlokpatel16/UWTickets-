@@ -11,7 +11,7 @@ struct ExchangeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: OffersView(currentOffers: dummyDataExchange)) {
+                NavigationLink(destination: OffersView(currentOffers: offers)) {
                     
                     Button("Go to Current Offers Area") {
                         
@@ -24,7 +24,7 @@ struct ExchangeView: View {
                     )
                 }
                 
-                NavigationLink(destination: HistoryView(oldOffers: dummyData)) {
+                NavigationLink(destination: HistoryView(oldOffers: oldOffers)) {
                     
                     Button("Go to History Area") {
                         

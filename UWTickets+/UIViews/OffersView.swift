@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OffersView: View {
-    var currentOffers : [currentOffer]    
+    var currentOffers : [offer]
     var body: some View {
     NavigationView {
         VStack {
@@ -16,76 +16,77 @@ struct OffersView: View {
                 currentOffer in currentListRow(eachOffer: currentOffer)
             }
             
-            NavigationLink(destination: ExchangeView()) {
-                Button("Back to Exchange Area") {
-                    
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 5)
-                .background(
-                    Capsule()
-                        .stroke(Color.gray)
-                )
-            }
-            
-            
         }
         .navigationBarTitle(Text("All Current Offers"))
     }
+    .padding(.bottom, 15)
     }
 }
 struct currentListRow: View {
-    var eachOffer: currentOffer
+    var eachOffer: offer
     var body: some View {
-
-            HStack {
-                Text(eachOffer.name)
-                Text("Offer Price: " + String(eachOffer.offerPrice))
-                        .font(.subheadline)
-                        .foregroundColor(Color.red)
-                Text("Sell Price: " + String(eachOffer.sellingPrice))
-                        .font(.subheadline)
-                        .foregroundColor(Color.blue)
-                Button("Confirm") {
+        HStack {
+            Image(eachOffer.logo)
+                .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 40, maxHeight: 40)
+            Spacer()
+            Text(eachOffer.otherPerson)
+        }
+        
+        HStack {
+            let askingPriceDouble = Double(eachOffer.price)
+            Text("\(askingPriceDouble!, specifier: "For $%.2f")")
+            Spacer()
+            Button("Accept") {
+                withAnimation{
                 }
-                .padding(.horizontal, 5)
-                .padding(.vertical, 5)
-                .background(
-                    Capsule()
-                        .stroke(Color.gray)
-                )
-                
-                Button("Decline") {
-                }
-                .padding(.horizontal, 4)
-                .padding(.vertical, 5)
-                .background(
-                    Capsule()
-                        .stroke(Color.gray)
-                )
-                
+                print("Accepted")
             }
-        
-        
+            .buttonStyle(BorderlessButtonStyle())
+            .accentColor(.green)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 5)
+            .background(
+                Capsule()
+                    .stroke(Color.green, lineWidth: 1.0)
+            )
+            Button("Decline") {
+                withAnimation{
+                }
+                print("Declined")
+            }
+            .buttonStyle(BorderlessButtonStyle())
+            .accentColor(.red)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 5)
+            .background(
+                Capsule()
+                    .stroke(Color.red, lineWidth: 1.0)
+            )
+            
+        }
     }
+        
 }
 
-struct currentOffer: Identifiable {
+struct offer: Identifiable {
     var id : Int
-    var name : String
-    var sellingPrice : Double
-    var offerPrice : Double
+    var logo : String
+    var price : String
+    var otherPerson : String
 }
 
-let dummyDataExchange = [
-    currentOffer(id : 1, name: "Penn State", sellingPrice: 30.00, offerPrice: 30.00),
-    currentOffer(id : 2, name: "Michigan", sellingPrice: 25.00, offerPrice: 30.00),
-    currentOffer(id : 3, name: "Northwestern", sellingPrice: 40.00, offerPrice: 30.00),
-    currentOffer(id : 4, name: "Purdue", sellingPrice: 40.00, offerPrice: 30.00),
-    currentOffer(id : 5, name: "Illinois", sellingPrice: 40.00, offerPrice: 30.00)]
+let offers = [
+    offer(id : 1, logo: "PennLogo", price: "30.00", otherPerson: "testsellername"),
+    offer(id : 2, logo: "MichLogo", price: "25.00", otherPerson: "cgeorge22@gmail.com"),
+    offer(id : 3, logo: "NorthwesternLogo", price: "40.00", otherPerson: "shlok16patel@gmail.com"),
+    offer(id : 4, logo: "PurdueLogo", price: "40.00", otherPerson: "anotherchris@gmail.com"),
+    offer(id : 5, logo: "IllinoisLogo", price: "40.00", otherPerson: "testsellername"),
+    offer(id : 6, logo: "NebraskaLogo", price: "45.00", otherPerson: "testsellername")]
 
 struct OffersView_Previews: PreviewProvider {
     static var previews: some View {
-        OffersView(currentOffers : dummyDataExchange)
+        OffersView(currentOffers : offers)
     }
 }

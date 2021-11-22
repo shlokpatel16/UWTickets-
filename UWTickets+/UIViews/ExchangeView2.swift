@@ -18,7 +18,7 @@ struct ExchangeView2: View {
             NavigationView {
                 VStack{
                     HStack {
-                        NavigationLink(destination: OffersView(currentOffers: dummyDataExchange)) {
+                        NavigationLink(destination: OffersView(currentOffers: offers)) {
                             Capsule()
                                 .fill(Color.red)
                                 .frame(width: 200, height: 100)
@@ -29,7 +29,7 @@ struct ExchangeView2: View {
                                         .foregroundColor(.black)
                                 )
                         }
-                        NavigationLink(destination: HistoryView(oldOffers: dummyData)) {
+                        NavigationLink(destination: HistoryView(oldOffers: oldOffers)) {
                             Capsule()
                                 .fill(Color.red)
                                 .frame(width: 200, height: 100)
