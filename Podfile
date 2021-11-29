@@ -6,6 +6,7 @@ target 'UWTickets+' do
   use_frameworks!
 
   # Pods for UWTickets+
+pod 'Firebase'
 pod 'Firebase/Auth'
 pod 'Firebase/Analytics'
 pod 'Firebase/Core'
