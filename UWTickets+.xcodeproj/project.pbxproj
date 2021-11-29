@@ -23,6 +23,7 @@
 		DDFEF5A62730915400F3FF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEF5A52730915400F3FF10 /* ContentView.swift */; };
 		DDFEF5A82730915F00F3FF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFEF5A72730915F00F3FF10 /* Assets.xcassets */; };
 		DDFEF5AB2730915F00F3FF10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFEF5AA2730915F00F3FF10 /* Preview Assets.xcassets */; };
+		EB701A7961B3559E61E725E6 /* Pods_UWTickets_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB8C728F465887A0439AC47 /* Pods_UWTickets_Tests.framework */; };
 		ECD985B047B61A6313C23E13 /* Pods_UWTickets_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 981B7361AB7550C5086F5490 /* Pods_UWTickets_.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AFB7C68C19270E72FF2A3ED /* Pods-UWTickets+Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWTickets+Tests.debug.xcconfig"; path = "Target Support Files/Pods-UWTickets+Tests/Pods-UWTickets+Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		0FB8C728F465887A0439AC47 /* Pods_UWTickets_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UWTickets_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AD1EDDEA3E0D49EF1A5B23B /* Pods-UWTickets+Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWTickets+Tests.release.xcconfig"; path = "Target Support Files/Pods-UWTickets+Tests/Pods-UWTickets+Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2CCCB5E25E8B00D31ED7D493 /* Pods-UWTickets+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWTickets+.release.xcconfig"; path = "Target Support Files/Pods-UWTickets+/Pods-UWTickets+.release.xcconfig"; sourceTree = "<group>"; };
 		3F3052252734F24F00F8E772 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
 		3FEAD0E82735C77A00D3DCF6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB701A7961B3559E61E725E6 /* Pods_UWTickets_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,8 @@
 			children = (
 				C909B5AB190DAAB57299D7AB /* Pods-UWTickets+.debug.xcconfig */,
 				2CCCB5E25E8B00D31ED7D493 /* Pods-UWTickets+.release.xcconfig */,
+				0AFB7C68C19270E72FF2A3ED /* Pods-UWTickets+Tests.debug.xcconfig */,
+				1AD1EDDEA3E0D49EF1A5B23B /* Pods-UWTickets+Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -101,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				981B7361AB7550C5086F5490 /* Pods_UWTickets_.framework */,
+				0FB8C728F465887A0439AC47 /* Pods_UWTickets_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 660C32CE274891C300D6C040 /* Build configuration list for PBXNativeTarget "UWTickets+Tests" */;
 			buildPhases = (
+				AABC586902E844CC3CBC2A35 /* [CP] Check Pods Manifest.lock */,
 				660C32C2274891C300D6C040 /* Sources */,
 				660C32C3274891C300D6C040 /* Frameworks */,
 				660C32C4274891C300D6C040 /* Resources */,
+				CAED174A8F56919ECF9BCAE2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -310,6 +320,45 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UWTickets+/Pods-UWTickets+-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AABC586902E844CC3CBC2A35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UWTickets+Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAED174A8F56919ECF9BCAE2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UWTickets+Tests/Pods-UWTickets+Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UWTickets+Tests/Pods-UWTickets+Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UWTickets+Tests/Pods-UWTickets+Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -353,6 +402,7 @@
 /* Begin XCBuildConfiguration section */
 		660C32CC274891C300D6C040 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AFB7C68C19270E72FF2A3ED /* Pods-UWTickets+Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -381,6 +431,7 @@
 		};
 		660C32CD274891C300D6C040 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AD1EDDEA3E0D49EF1A5B23B /* Pods-UWTickets+Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
