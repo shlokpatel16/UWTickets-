@@ -239,6 +239,8 @@ struct Login : View {
 struct SignUp : View {
     
     @State var color = Color.black.opacity(0.7)
+    @State var name = ""
+    @State var phone = ""
     @State var email = ""
     @State var pass = ""
     @State var repass = ""
@@ -253,27 +255,37 @@ struct SignUp : View {
         ZStack {
             
             ZStack(alignment: .topLeading) {
-                
-                GeometryReader {_ in
-                    
+                                    
                     VStack {
                         
                         Image("Logo")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 300, height: 200)
+                            .frame(width: 250, height: 150)
                         
                         Text("Create an account")
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(self.color)
-                            .padding(.top, 35)
+                            .padding(.top, 10)
+                        
+                        TextField("Name", text: self.$name)
+                            .autocapitalization(.none)
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 4).stroke(self.name != "" ? Color("Color") : self.color, lineWidth: 2))
+                            .padding(.top, 10)
+                        
+                        TextField("Phone Number", text: self.$phone)
+                            .autocapitalization(.none)
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 4).stroke(self.phone != "" ? Color("Color") : self.color, lineWidth: 2))
+                            .padding(.top, 10)
                         
                         TextField("Email", text: self.$email)
                             .autocapitalization(.none)
                             .padding()
                             .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color, lineWidth: 2))
-                            .padding(.top, 25)
+                            .padding(.top, 10)
                         
                         HStack(spacing: 15) {
                             
@@ -302,7 +314,7 @@ struct SignUp : View {
                         }
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color, lineWidth: 2))
-                        .padding(.top, 25)
+                        .padding(.top, 10)
                         
                         HStack(spacing: 15) {
                             
@@ -331,7 +343,7 @@ struct SignUp : View {
                         }
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color, lineWidth: 2))
-                        .padding(.top, 25)
+                        .padding(.top, 10)
                         
                         Button(action: {
                             
@@ -349,7 +361,6 @@ struct SignUp : View {
                         .padding(.top, 25)
                     }
                     .padding(.horizontal, 25)
-                }
                 
                 Button(action: {
                     
