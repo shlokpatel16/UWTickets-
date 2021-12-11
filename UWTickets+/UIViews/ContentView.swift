@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import FirebaseDatabase
+
 
 struct ContentView: View {
     var body: some View {
@@ -249,6 +251,7 @@ struct SignUp : View {
     @Binding var show : Bool
     @State var alert = false
     @State var error = ""
+    @State var hasTickets = false
     
     var body : some View {
         
@@ -345,10 +348,10 @@ struct SignUp : View {
                         .background(RoundedRectangle(cornerRadius: 4).stroke(self.pass != "" ? Color("Color") : self.color, lineWidth: 2))
                         .padding(.top, 10)
                         
+                        Toggle("Do you currently own season tickets?", isOn:$hasTickets)
+                        
                         Button(action: {
-                            
                             self.register()
-                            
                         }) {
                             
                             Text("Sign up")
@@ -384,6 +387,7 @@ struct SignUp : View {
     }
     
     func register() {
+//        let database = Database.database().reference()
         
         if self.email != "" {
             
@@ -397,7 +401,11 @@ struct SignUp : View {
                         self.alert.toggle()
                         return
                     }
-                    
+                    var ticketList : [String] = []
+                    if self.hasTickets {
+                        ticketList = ["Penn State", "Eastern MI", "Notre Dame", "Michigan", "Army", "Iowa", "Northwestern", "Nebraska"]
+                    }
+                    database.child("Users/" + Auth.auth().currentUser!.uid).setValue(["name":  self.name, "phoneNumber": self.phone, "tickets": ticketList])
                     print("success")
                     
                     UserDefaults.standard.set(true, forKey: "status")
