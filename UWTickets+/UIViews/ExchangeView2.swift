@@ -5,11 +5,15 @@
 //  Created by Paresh on 11/19/21.
 //
 import SwiftUI
+import FirebaseAuth
+import FirebaseDatabase
+
+let db = Database.database().reference()
 
 struct ExchangeView2: View {
     var filterGames = ["Choose Game", "Penn State", "Eastern MI", "Notre Dame", "Michigan", "Illinois", "Army", "Purdue", "Iowa", "Rutgers", "Northwestern", "Nebraska", "Minnesota"]
     @State private var filterGame = "Choose Game"
-    var filterSellers = ["Choose Seller", "Shlok", "Jake", "Chris", "sampleuser1", "sampleruser2"]
+    @State var filterSellers = ["Choose Seller", "Shlok", "Jake", "Chris", "sampleuser1", "sampleruser2"]
     @State private var filterSeller = "Choose Seller"
     @State private var price: String = ""
 
@@ -67,6 +71,9 @@ struct ExchangeView2: View {
                             }
                         }
                     }.padding(.horizontal, 75)
+                        .onAppear() {
+                            self.getSellerList()
+                        }
                     
                     HStack {
                         Text("Choose the Price: $")
@@ -77,7 +84,10 @@ struct ExchangeView2: View {
                             .textFieldStyle(.roundedBorder)
                     }.padding(.horizontal, 75)
                     Button("Send Offer"){
-                        
+                        print(filterGame)
+                        print(filterSeller)
+                        print(price)
+                        self.sendOffer()
                     }
                     .foregroundColor(.white)
                     .font(.title2)
@@ -95,7 +105,37 @@ struct ExchangeView2: View {
 
         
     }
+    func getSellerList() {
+        var sellers = [String]()
+        db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+            for user in users {
+                sellers.append(
+                    user.value["name"] as! String
+                )
+            }
+            filterSellers = sellers
+        }
+    }
+    func sendOffer() {
+//        var offers = [String]()
+        db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+            for user in users {
+                if user.value["name"] as! String == filterSeller {
+                    let uid = Auth.auth().currentUser!.uid;
+//                    if snapshot.hasChild("Users/" + uid + "/" + filterSeller + "/CurrentOffers") {
+                        let buyer = db.child("Users").child(uid).child("name")
+                        db.child("Users/" + uid + "/CurrentOffers").childByAutoId().setValue(["logo": filterGame, "price": price, "other person": buyer])
+//                    } else {
+//                        db.child("Users/")
+//                    }
+                }
+            }
+        }
+    }
 }
+
 
 struct ExchangeView2_Previews: PreviewProvider {
     static var previews: some View {
