@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import SwiftUI
 
 class UWTickets_UITests: XCTestCase {
 
@@ -62,17 +63,13 @@ class UWTickets_UITests: XCTestCase {
        
         
         email.tap()
-        email.typeText("newemail@gmail.com")
+        email.typeText("newemail@gmail.com\n")
         
-        /*
         emailsave.tap()
-        
-        toggle.tap()
-        
         
         app.tabBars["Tab Bar"].buttons["Exchange"].tap()
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
-         */
+         
         XCTAssertEqual(email.value as! String, "newemail@gmail.com")
     }
     
@@ -85,10 +82,12 @@ class UWTickets_UITests: XCTestCase {
         let usernamesave = self.app.buttons["saveUsername"]
         
         username.tap()
-        username.typeText("newusername@gmail.com")
+        username.typeText("newusername\n")
         
         usernamesave.tap()
-        XCTAssertEqual(username.value as! String, "newusername@gmail.com")
+        app.tabBars["Tab Bar"].buttons["Exchange"].tap()
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        XCTAssertEqual(username.value as! String, "newusername")
     }
     
     func testSavePassword() {
@@ -100,11 +99,27 @@ class UWTickets_UITests: XCTestCase {
         let passwordsave = self.app.buttons["savePassword"]
         
         password.tap()
-        password.typeText("newpassword@gmail.com")
+        password.typeText("newpassword")
         
         passwordsave.tap()
+        app.tabBars["Tab Bar"].buttons["Exchange"].tap()
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
         
-        XCTAssertEqual(password.value as! String, "newpassword@gmail.com")
+        XCTAssertEqual(password.value as! String, "newpassword")
+    }
+
+    func testAverage() {
+        app.tabBars["Tab Bar"].buttons["Market"].tap()
+        
+        let average = app.staticTexts["marketAverage"]
+        XCTAssertEqual(average, "$56.36")
+        
+    }
+    func testFilter() {
+        app.tabBars["Tab Bar"].buttons["Market"].tap()
+        app.pickerWheels.element.adjust(toPickerWheelValue: "Penn State")
+        
+        
     }
     
     

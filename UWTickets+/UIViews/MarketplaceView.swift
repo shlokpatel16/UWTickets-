@@ -29,8 +29,10 @@ struct MarketplaceView: View {
                         Text($0)
                     }
                 }
+                .accessibility(identifier: "picker")
             }
             Text("Average asking price: \(getAveragePrice(listings: filteredListings).isNaN ? 0: getAveragePrice(listings: filteredListings), specifier: "$%.2f")")
+                .accessibility(identifier: "marketAverage")
             List{
                 ForEach(listings!.filter {$0.game == filterGame || filterGame == "All"}) {
                     Listing in MarketplaceListing(itemForSale: Listing)
