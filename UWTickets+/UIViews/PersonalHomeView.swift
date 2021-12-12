@@ -51,6 +51,7 @@ struct ChatListRow: View {
                 Capsule()
                     .stroke(Color.green, lineWidth: 1.0)
             )
+            .accessibility(identifier: "buybutton")
             .sheet(isPresented: $showingSheet) {
                 MarketplaceView(listings: [])
             }
