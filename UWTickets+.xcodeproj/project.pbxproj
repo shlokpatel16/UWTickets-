@@ -17,6 +17,8 @@
 		66A541D027346B3F0054CA53 /* PersonalHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */; };
 		66A541D22734AB870054CA53 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541D12734AB870054CA53 /* TabBarView.swift */; };
 		66A541D62735F9C20054CA53 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A541D52735F9C20054CA53 /* ChatView.swift */; };
+		70B775952765D18A0048C4B5 /* UWTickets_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B775942765D18A0048C4B5 /* UWTickets_UITests.swift */; };
+		70B775972765D18A0048C4B5 /* UWTickets_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B775962765D18A0048C4B5 /* UWTickets_UITestsLaunchTests.swift */; };
 		DD9D0F2927444EF2005B147C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D0F2827444EF2005B147C /* AppDelegate.swift */; };
 		DD9D0F2B27444F42005B147C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD9D0F2A27444F42005B147C /* GoogleService-Info.plist */; };
 		DDFEF5A42730915400F3FF10 /* UWTickets_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFEF5A32730915400F3FF10 /* UWTickets_App.swift */; };
@@ -28,6 +30,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		660C32CA274891C300D6C040 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDFEF5982730915400F3FF10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DDFEF59F2730915400F3FF10;
+			remoteInfo = "UWTickets+";
+		};
+		70B775982765D18A0048C4B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DDFEF5982730915400F3FF10 /* Project object */;
 			proxyType = 1;
@@ -49,6 +58,9 @@
 		66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHomeView.swift; sourceTree = "<group>"; };
 		66A541D12734AB870054CA53 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		66A541D52735F9C20054CA53 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		70B775922765D18A0048C4B5 /* UWTickets+UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UWTickets+UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70B775942765D18A0048C4B5 /* UWTickets_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWTickets_UITests.swift; sourceTree = "<group>"; };
+		70B775962765D18A0048C4B5 /* UWTickets_UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWTickets_UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		981B7361AB7550C5086F5490 /* Pods_UWTickets_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UWTickets_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C909B5AB190DAAB57299D7AB /* Pods-UWTickets+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWTickets+.debug.xcconfig"; path = "Target Support Files/Pods-UWTickets+/Pods-UWTickets+.debug.xcconfig"; sourceTree = "<group>"; };
 		DD9D0F2827444EF2005B147C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +75,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		660C32C3274891C300D6C040 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70B7758F2765D18A0048C4B5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -95,6 +114,15 @@
 				660C32D32748A3B000D6C040 /* testing.swift */,
 			);
 			path = "UWTickets+Tests";
+			sourceTree = "<group>";
+		};
+		70B775932765D18A0048C4B5 /* UWTickets+UITests */ = {
+			isa = PBXGroup;
+			children = (
+				70B775942765D18A0048C4B5 /* UWTickets_UITests.swift */,
+				70B775962765D18A0048C4B5 /* UWTickets_UITestsLaunchTests.swift */,
+			);
+			path = "UWTickets+UITests";
 			sourceTree = "<group>";
 		};
 		D73997C392AD9EBFAC1C51C3 /* Frameworks */ = {
@@ -135,6 +163,7 @@
 				DD9D0F2A27444F42005B147C /* GoogleService-Info.plist */,
 				DDFEF5A22730915400F3FF10 /* UWTickets+ */,
 				660C32C7274891C300D6C040 /* UWTickets+Tests */,
+				70B775932765D18A0048C4B5 /* UWTickets+UITests */,
 				DDFEF5A12730915400F3FF10 /* Products */,
 				172B7190C3C1FC1153A645D5 /* Pods */,
 				D73997C392AD9EBFAC1C51C3 /* Frameworks */,
@@ -146,6 +175,7 @@
 			children = (
 				DDFEF5A02730915400F3FF10 /* UWTickets+.app */,
 				660C32C6274891C300D6C040 /* UWTickets+Tests.xctest */,
+				70B775922765D18A0048C4B5 /* UWTickets+UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,6 +223,24 @@
 			productReference = 660C32C6274891C300D6C040 /* UWTickets+Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		70B775912765D18A0048C4B5 /* UWTickets+UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70B7759C2765D18A0048C4B5 /* Build configuration list for PBXNativeTarget "UWTickets+UITests" */;
+			buildPhases = (
+				70B7758E2765D18A0048C4B5 /* Sources */,
+				70B7758F2765D18A0048C4B5 /* Frameworks */,
+				70B775902765D18A0048C4B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70B775992765D18A0048C4B5 /* PBXTargetDependency */,
+			);
+			name = "UWTickets+UITests";
+			productName = "UWTickets+UITests";
+			productReference = 70B775922765D18A0048C4B5 /* UWTickets+UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		DDFEF59F2730915400F3FF10 /* UWTickets+ */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDFEF5AF2730915F00F3FF10 /* Build configuration list for PBXNativeTarget "UWTickets+" */;
@@ -226,6 +274,10 @@
 						LastSwiftMigration = 1310;
 						TestTargetID = DDFEF59F2730915400F3FF10;
 					};
+					70B775912765D18A0048C4B5 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = DDFEF59F2730915400F3FF10;
+					};
 					DDFEF59F2730915400F3FF10 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -246,12 +298,20 @@
 			targets = (
 				DDFEF59F2730915400F3FF10 /* UWTickets+ */,
 				660C32C5274891C300D6C040 /* UWTickets+Tests */,
+				70B775912765D18A0048C4B5 /* UWTickets+UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		660C32C4274891C300D6C040 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70B775902765D18A0048C4B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -321,6 +381,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70B7758E2765D18A0048C4B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70B775972765D18A0048C4B5 /* UWTickets_UITestsLaunchTests.swift in Sources */,
+				70B775952765D18A0048C4B5 /* UWTickets_UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DDFEF59C2730915400F3FF10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,6 +416,11 @@
 			isa = PBXTargetDependency;
 			target = DDFEF59F2730915400F3FF10 /* UWTickets+ */;
 			targetProxy = 660C32CA274891C300D6C040 /* PBXContainerItemProxy */;
+		};
+		70B775992765D18A0048C4B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DDFEF59F2730915400F3FF10 /* UWTickets+ */;
+			targetProxy = 70B775982765D18A0048C4B5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -399,6 +473,52 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UWTickets+.app/UWTickets+";
+			};
+			name = Release;
+		};
+		70B7759A2765D18A0048C4B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "None.UWTickets-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "UWTickets+";
+			};
+			name = Debug;
+		};
+		70B7759B2765D18A0048C4B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "None.UWTickets-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "UWTickets+";
 			};
 			name = Release;
 		};
@@ -572,6 +692,15 @@
 			buildConfigurations = (
 				660C32CC274891C300D6C040 /* Debug */,
 				660C32CD274891C300D6C040 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70B7759C2765D18A0048C4B5 /* Build configuration list for PBXNativeTarget "UWTickets+UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70B7759A2765D18A0048C4B5 /* Debug */,
+				70B7759B2765D18A0048C4B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
