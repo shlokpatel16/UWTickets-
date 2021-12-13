@@ -103,6 +103,7 @@ struct Login : View {
                             .padding()
                             .background(RoundedRectangle(cornerRadius: 4).stroke(self.email != "" ? Color("Color") : self.color, lineWidth: 2))
                             .padding(.top, 25)
+                            .accessibility(identifier: "LoginEmail")
                         
                         HStack(spacing: 15) {
                             
@@ -117,6 +118,7 @@ struct Login : View {
                                     
                                     SecureField("Password", text: self.$pass)
                                         .autocapitalization(.none)
+                                        .accessibility(identifier: "LoginPassword")
                                 }
                             }
                             
@@ -164,6 +166,7 @@ struct Login : View {
                         .background(Color("Color"))
                         .cornerRadius(10)
                         .padding(.top, 25)
+                        .accessibility(identifier: "LoginButton")
                     }
                     .padding(.horizontal, 25)
                 }

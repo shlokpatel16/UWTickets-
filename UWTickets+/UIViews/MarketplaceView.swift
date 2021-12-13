@@ -12,6 +12,7 @@ struct MarketplaceView: View {
     var filterGames = ["All", "Penn State", "Eastern MI", "Notre Dame", "Michigan", "Illinois", "Army", "Purdue", "Iowa", "Rutgers", "Northwestern", "Nebraska", "Minnesota"]
     @State private var filterGame = "All"
     @State var listings: [Listing]? = []
+        
     
     var body: some View {
         let filteredListings = listings!.filter { listing in
@@ -21,6 +22,7 @@ struct MarketplaceView: View {
             return listing.game == filterGame
         }
 
+
         VStack{
             HStack {
                 Text("Filter by opponent:")
@@ -29,13 +31,16 @@ struct MarketplaceView: View {
                         Text($0)
                     }
                 }
+                .accessibility(identifier: "picker")
             }
             Text("Average asking price: \(getAveragePrice(listings: filteredListings).isNaN ? 0: getAveragePrice(listings: filteredListings), specifier: "$%.2f")")
+                .accessibility(identifier: "marketAverage")
             List{
                 ForEach(listings!.filter {$0.game == filterGame || filterGame == "All"}) {
                     Listing in MarketplaceListing(itemForSale: Listing)
                 }
             }
+            .accessibility(identifier: "marketTable")
         }.onAppear() {
             self.getMarketplace()
         }

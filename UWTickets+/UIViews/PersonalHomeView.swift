@@ -51,6 +51,7 @@ struct ChatListRow: View {
                 Capsule()
                     .stroke(Color.green, lineWidth: 1.0)
             )
+            .accessibility(identifier: eachGame.name + "buy")
             .sheet(isPresented: $showingSheet) {
                 MarketplaceView(listings: [])
             }
@@ -64,6 +65,7 @@ struct ChatListRow: View {
             .buttonStyle(BorderlessButtonStyle())
             .accentColor(.red)
             .padding(.horizontal, 20)
+            .accessibility(identifier: eachGame.name + "sell")
             .padding(.vertical, 5)
             .background(
                 Capsule()
