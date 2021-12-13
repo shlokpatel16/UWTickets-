@@ -11,7 +11,7 @@ import FirebaseAuth
 
 struct OffersView: View {
     @State var currentOffers : [offer]? = []
-    var nameToLogo:[String:String] = ["Penn State": "PennLogo", "Eastern MI": "EasternLogo", "Notre Dame": "NDLogo", "Michigan" : "MichLogo", "Illinois": "IllinoisLogo", "Army" : "ArmyLogo", "Purdue": "PurdueLogo", "Iowa": "IowaLogo", "Rutgers": "RLogo", "Northwestern": "NorthwesternLogo", "Nebraska": "NebraskaLogo", "Minnesota": "MinnesotaLogo"]
+    let nameToLogo:[String:String] = ["Penn State": "PennLogo", "Eastern MI": "EasternLogo", "Notre Dame": "NDLogo", "Michigan" : "MichLogo", "Illinois": "IllinoisLogo", "Army" : "ArmyLogo", "Purdue": "PurdueLogo", "Iowa": "IowaLogo", "Rutgers": "RLogo", "Northwestern": "NorthwesternLogo", "Nebraska": "NebraskaLogo", "Minnesota": "MinnesotaLogo"]
     var body: some View {
     NavigationView {
         VStack {
@@ -22,7 +22,7 @@ struct OffersView: View {
         }
         .navigationBarTitle(Text("All Current Offers"))
         .onAppear() {
-            getOffers()
+            self.getOffers()
         }
     }
     .padding(.bottom, 15)
@@ -66,53 +66,126 @@ struct OffersView: View {
 //        print(offerSet)
 //        self.currentOffers = offerSet
     }
-}
-struct currentListRow: View {
-    var eachOffer: offer
-    var body: some View {
-        HStack {
-            Image(eachOffer.logo)
-                .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: 40, maxHeight: 40)
-            Spacer()
-            Text(eachOffer.otherPerson)
-        }
-        
-        HStack {
-            let askingPriceDouble = Double(eachOffer.price)
-            Text("\(askingPriceDouble!, specifier: "For $%.2f")")
-            Spacer()
-            Button("Accept") {
-                withAnimation{
-                }
-                print("Accepted")
+    struct currentListRow: View {
+        var eachOffer: offer
+        var body: some View {
+            HStack {
+                Image(eachOffer.logo)
+                    .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 40, maxHeight: 40)
+                Spacer()
+                Text(eachOffer.otherPerson)
             }
-            .buttonStyle(BorderlessButtonStyle())
-            .accentColor(.green)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 5)
-            .background(
-                Capsule()
-                    .stroke(Color.green, lineWidth: 1.0)
-            )
-            Button("Decline") {
-                withAnimation{
-                }
-                print("Declined")
-            }
-            .buttonStyle(BorderlessButtonStyle())
-            .accentColor(.red)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 5)
-            .background(
-                Capsule()
-                    .stroke(Color.red, lineWidth: 1.0)
-            )
             
+            HStack {
+                let askingPriceDouble = Double(eachOffer.price)
+                Text("\(askingPriceDouble!, specifier: "For $%.2f")")
+                Spacer()
+                Button("Accept") {
+                    withAnimation{
+                        db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+                            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                            for user in users {
+                                let uid = Auth.auth().currentUser!.uid
+                                let seller = user.key
+                                if user.key == uid {
+                                    db.child("Users/" + seller + "/history").childByAutoId().setValue(["logo": eachOffer.logo, "price": eachOffer.price, "other person": eachOffer.otherPerson, "bought": 0])
+                                }
+                            }
+                            for user in users {
+                                let uid = Auth.auth().currentUser!.uid
+                                print("ooooooga")
+                                let other = user.value["name"] as! String
+                                let buyer = user.key
+                                if other == eachOffer.otherPerson {
+                                    db.child("Users/" + buyer + "/history").childByAutoId().setValue(["logo": eachOffer.logo, "price": eachOffer.price, "other person": eachOffer.otherPerson, "bought": 1])
+                                }
+//                                if user.key == seller {
+//                                    db.child("Users/" + seller + "/history").childByAutoId().setValue(["logo": eachOffer.logo, "price": eachOffer.price, "other person": eachOffer.otherPerson, "bought": false])
+//                                }
+                            }
+                        }
+                        
+                        var offerSet = [offer]()
+                        let ref = Database.database().reference()
+                        ref.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+                            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                            let uid = Auth.auth().currentUser!.uid
+                            for user in users {
+                                if user.key == uid {
+                                    var path = "Users/" + uid + "/CurrentOffers/" + eachOffer.id
+                                    print(path)
+                                    ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                                        print("here the snap")
+                                        print(snapshot)
+                                    }
+                                    ref.child(path).removeValue()
+//                                    OffersView()
+//                                    getOffers()
+                                }
+                //                print("past users")
+                            }
+                        }
+                //        print("current offers heree")
+                //        print(offerSet)
+                //        self.currentOffers = offerSet
+                    }
+                    print("Accepted")
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .accentColor(.green)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 5)
+                .background(
+                    Capsule()
+                        .stroke(Color.green, lineWidth: 1.0)
+                )
+                Button("Decline") {
+                    withAnimation{
+                        print(eachOffer.id)
+                        var offerSet = [offer]()
+                        let ref = Database.database().reference()
+                        ref.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+                            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                            let uid = Auth.auth().currentUser!.uid
+                            for user in users {
+                                if user.key == uid {
+                                    var path = "Users/" + uid + "/CurrentOffers/" + eachOffer.id
+                                    print(path)
+                                    ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                                        print("here the snap")
+                                        print(snapshot)
+                                    }
+                                    ref.child(path).removeValue()
+//                                    OffersView()
+//                                    getOffers()
+                                }
+                //                print("past users")
+                            }
+                        }
+                //        print("current offers heree")
+                //        print(offerSet)
+                //        self.currentOffers = offerSet
+                        
+                    }
+                    print("Declined")
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .accentColor(.red)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 5)
+                .background(
+                    Capsule()
+                        .stroke(Color.red, lineWidth: 1.0)
+                )
+                
+            }
         }
     }
-}
+
+    }
+
 
 struct offer: Identifiable {
     var id : String

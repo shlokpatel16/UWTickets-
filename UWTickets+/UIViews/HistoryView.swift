@@ -6,20 +6,61 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import FirebaseDatabase
 
 struct HistoryView: View {
     
-    var oldOffers : [oldOffer]
+    @State var oldOffers : [oldOffer]? = []
+    let nameToLogo:[String:String] = ["Penn State": "PennLogo", "Eastern MI": "EasternLogo", "Notre Dame": "NDLogo", "Michigan" : "MichLogo", "Illinois": "IllinoisLogo", "Army" : "ArmyLogo", "Purdue": "PurdueLogo", "Iowa": "IowaLogo", "Rutgers": "RLogo", "Northwestern": "NorthwesternLogo", "Nebraska": "NebraskaLogo", "Minnesota": "MinnesotaLogo"]
     var body: some View {
         NavigationView {
             VStack {
-                List(oldOffers) {
+                List(oldOffers!) {
                     oldOffer in ListRow(eachOffer: oldOffer)
                 }
             }
             .navigationBarTitle(Text("Offer History"))
+            .onAppear() {
+                self.getHistory()
+            }
         }
         .padding(.bottom, 15)
+    }
+    func getHistory() {
+        var historySet = [oldOffer]()
+        let ref = Database.database().reference()
+        ref.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+            let uid = Auth.auth().currentUser!.uid
+            for user in users {
+                if user.key == uid {
+                    var path = "Users/" + uid + "/history"
+                    print(path)
+                    ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                        print("here the snap")
+                        print(snapshot)
+                        let offers: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                        for singleOffer in offers {
+                            print("thisis a single offer")
+                            print(singleOffer)
+                            historySet.append(
+                                oldOffer(
+                                    id: singleOffer.key,
+                                    logo: singleOffer.value["logo"] as! String,
+                                    price: singleOffer.value["price"] as! String,
+                                    otherPerson: singleOffer.value["other person"] as! String,
+                                    bought: singleOffer.value["bought"] as! Int
+                                )
+                            )
+                        }
+                        print("current offers heree")
+                        print(historySet)
+                        self.oldOffers = historySet
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -36,7 +77,7 @@ struct ListRow: View {
             Text("\(askingPriceDouble!, specifier: "For $%.2f")")
         }
         HStack {
-            if eachOffer.bought == true {
+            if eachOffer.bought == 1 {
                 Text("Bought from:")
                     .foregroundColor(.green)
             } else {
@@ -50,23 +91,23 @@ struct ListRow: View {
 }
 
 struct oldOffer: Identifiable {
-    var id : Int
+    var id : String
     var logo : String
     var price : String
     var otherPerson : String
-    var bought : Bool
+    var bought : Int
 }
 
-let oldOffers = [
-    oldOffer(id : 1, logo: "PennLogo", price: "30.00", otherPerson: "testsellername", bought: true),
-    oldOffer(id : 2, logo: "MichLogo", price: "25.00", otherPerson: "cgeorge22@gmail.com", bought: false),
-    oldOffer(id : 3, logo: "NorthwesternLogo", price: "40.00", otherPerson: "shlok16patel@gmail.com", bought: true),
-    oldOffer(id : 4, logo: "PurdueLogo", price: "40.00", otherPerson: "anotherchris@gmail.com", bought: false),
-    oldOffer(id : 5, logo: "IllinoisLogo", price: "40.00", otherPerson: "testsellername", bought: false),
-    oldOffer(id : 6, logo: "NebraskaLogo", price: "45.00", otherPerson: "testsellername", bought: true)]
+//let oldOffers = [
+//    oldOffer(id : 1, logo: "PennLogo", price: "30.00", otherPerson: "testsellername", bought: true),
+//    oldOffer(id : 2, logo: "MichLogo", price: "25.00", otherPerson: "cgeorge22@gmail.com", bought: false),
+//    oldOffer(id : 3, logo: "NorthwesternLogo", price: "40.00", otherPerson: "shlok16patel@gmail.com", bought: true),
+//    oldOffer(id : 4, logo: "PurdueLogo", price: "40.00", otherPerson: "anotherchris@gmail.com", bought: false),
+//    oldOffer(id : 5, logo: "IllinoisLogo", price: "40.00", otherPerson: "testsellername", bought: false),
+//    oldOffer(id : 6, logo: "NebraskaLogo", price: "45.00", otherPerson: "testsellername", bought: true)]
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView(oldOffers : oldOffers)
+        HistoryView(oldOffers : [])
     }
 }

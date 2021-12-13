@@ -24,7 +24,7 @@ struct ExchangeView: View {
                     )
                 }
                 
-                NavigationLink(destination: HistoryView(oldOffers: oldOffers)) {
+                NavigationLink(destination: HistoryView(oldOffers: [])) {
                     
                     Button("Go to History Area") {
                         

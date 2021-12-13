@@ -34,7 +34,7 @@ struct ExchangeView2: View {
                                         .foregroundColor(.black)
                                 )
                         }
-                        NavigationLink(destination: HistoryView(oldOffers: oldOffers)) {
+                        NavigationLink(destination: HistoryView(oldOffers: [])) {
                             Capsule()
                                 .fill(Color.red)
                                 .frame(width: 200, height: 100)
@@ -103,7 +103,6 @@ struct ExchangeView2: View {
 
             }
         }
-
         
     }
     func getSellerList() {
