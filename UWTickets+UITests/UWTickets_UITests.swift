@@ -1,10 +1,3 @@
-//
-//  UWTickets_UITests.swift
-//  UWTickets+UITests
-//
-//  Created by Michael He on 12/12/21.
-//
-
 import XCTest
 import SwiftUI
 
@@ -14,23 +7,9 @@ class UWTickets_UITests: XCTestCase {
         XCUIApplication().launch()
     }
     let app = XCUIApplication()
+    var globalCount = 0;
     
-    func testInvalidLogin() {
-        let loginemail = self.app.textFields["LoginEmail"]
-        let loginpassword = self.app.secureTextFields["Password"]
-        //let loginbutton = self.app.buttons["LoginButton"]
-        
-        loginemail.tap()
-        loginemail.typeText("bademail")
-        
-        loginpassword.tap()
-        loginpassword.typeText("badpassword")
-        
-        app/*@START_MENU_TOKEN@*/.buttons["LoginButton"]/*[[".buttons[\"Login\"]",".buttons[\"LoginButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        
-    }
-    
+    // Make sure user is logged out before testing, tests valid login and password
     func testvalidlogin() {
         //app.activate()
         let loginemail = self.app.textFields["LoginEmail"]
@@ -41,12 +20,38 @@ class UWTickets_UITests: XCTestCase {
         loginemail.typeText("michaelhe@gmail.com")
         
         loginpassword.tap()
-        loginpassword.typeText("michaelhe")
+        loginpassword.typeText("michaelhe\n")
         
         loginbutton.tap()
         
-        let homebuy = self.app.buttons["buybutton"]
-        XCTAssertEqual(homebuy.exists, true)
+        
+        // navigates to Setting Screen, if this block does not execute that means the login failed
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        
+        let username = app.textFields["settingsUsername"]
+        
+        XCTAssertEqual(username.value as! String, "Change Username")
+
+    }
+    
+    // Make sure user is logged out before testing, tests invalid login and password
+    func testInvalidLogin() {
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("bademail")
+        
+        loginpassword.tap()
+        loginpassword.typeText("badpassword\n")
+        
+        loginbutton.tap()
+        
+        // if user is not logged in, buy button from the home view should not exist
+        let buybutton = self.app.buttons["buybutton"]
+        
+        XCTAssertEqual(buybutton.exists, false)
     }
     
     // login first to test
@@ -58,9 +63,6 @@ class UWTickets_UITests: XCTestCase {
        
         
         let emailsave = self.app.buttons["saveEmail"]
-        
-        let toggle = self.app.toggles["saveToggle"]
-       
         
         email.tap()
         email.typeText("newemail@gmail.com\n")
@@ -99,7 +101,7 @@ class UWTickets_UITests: XCTestCase {
         let passwordsave = self.app.buttons["savePassword"]
         
         password.tap()
-        password.typeText("newpassword")
+        password.typeText("newpassword\n")
         
         passwordsave.tap()
         app.tabBars["Tab Bar"].buttons["Exchange"].tap()
@@ -108,19 +110,58 @@ class UWTickets_UITests: XCTestCase {
         XCTAssertEqual(password.value as! String, "newpassword")
     }
 
+    // tests CURRENT AVERAGE shown. If you add more tickets, manually change values below
     func testAverage() {
         app.tabBars["Tab Bar"].buttons["Market"].tap()
-        
         let average = app.staticTexts["marketAverage"]
-        XCTAssertEqual(average, "$56.36")
+        XCTAssertEqual(average.exists, true)
+        
+        // wait for data to be loaded from database
+        sleep(10)
+        XCTAssertEqual(average.label, "Average asking price: $56.36")
+    }
+
+    
+    // tests CURRENT AVERAGE shown. If you add more tickets, manually change values below
+    func testNumberInMarket() {
+        app.tabBars["Tab Bar"].buttons["Market"].tap()
+        
+        // wait for data to appear in marketplace
+        sleep(10)
+        
+        let count = self.app.tables["marketTable"]
+        let num = count.children(matching: .cell).count
+        XCTAssertEqual(count.exists, true)
+        XCTAssertEqual(num, 24)
+        
+        globalCount = num;
+        XCTAssertEqual(globalCount, 24)
         
     }
+    
+    func testAddTicketToMarket() {
+        app.tabBars["Tab Bar"].buttons["Home"].tap()
+        
+        let sellbutton = app.buttons["Penn Statesell"]
+        sellbutton.tap()
+        
+        let postOffer = app.sheets.buttons["sellTicket"].firstMatch
+        
+        
+        XCTAssertEqual(postOffer.exists, false)
+        
+    }
+    
     func testFilter() {
         app.tabBars["Tab Bar"].buttons["Market"].tap()
-        app.pickerWheels.element.adjust(toPickerWheelValue: "Penn State")
+        sleep(10)
         
+        let picker = app.pickers["picker"]
+        
+        XCTAssertEqual(picker.exists, true)
         
     }
+    
     
     
 }
