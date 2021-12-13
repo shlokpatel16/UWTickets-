@@ -26,7 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,6 +36,16 @@
                BlueprintIdentifier = "660C32C5274891C300D6C040"
                BuildableName = "UWTickets+Tests.xctest"
                BlueprintName = "UWTickets+Tests"
+               ReferencedContainer = "container:UWTickets+.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "70B775912765D18A0048C4B5"
+               BuildableName = "UWTickets+UITests.xctest"
+               BlueprintName = "UWTickets+UITests"
                ReferencedContainer = "container:UWTickets+.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -22,12 +22,14 @@ struct SettingsView: View {
                 TextField("Change Email", text: self.$newEmail)
                     .autocapitalization(.none)
                     .padding()
+                    .accessibility(identifier: "settingsEmail")
                 Button("Save") {
                     
                 }
                 .accentColor(.blue)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 5)
+                .accessibility(identifier: "saveEmail")
                 .background(
                     Capsule()
                         .stroke(Color.blue, lineWidth: 1.0)
@@ -37,12 +39,14 @@ struct SettingsView: View {
                 TextField("Change Username", text: self.$newUsername)
                     .autocapitalization(.none)
                     .padding()
+                    .accessibility(identifier: "settingsUsername")
                 Button("Save") {
                     
                 }
                 .accentColor(.blue)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 5)
+                .accessibility(identifier: "saveUsername")
                 .background(
                     Capsule()
                         .stroke(Color.blue, lineWidth: 1.0)
@@ -52,12 +56,14 @@ struct SettingsView: View {
                 TextField("Change Password", text: self.$newPassword)
                     .autocapitalization(.none)
                     .padding()
+                    .accessibility(identifier: "settingsPassword")
                 Button("Save") {
                     
                 }
                 .accentColor(.blue)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 5)
+                .accessibility(identifier: "savePassword")
                 .background(
                     Capsule()
                         .stroke(Color.blue, lineWidth: 1.0)
@@ -86,6 +92,7 @@ struct SettingsView: View {
                 Toggle(isOn: $saveCardInfo) {
                 Text("Save Card Information:")
                 }
+                .accessibility(identifier: "saveToggle")
             }
             HStack {
                 Button(action: {
@@ -103,6 +110,7 @@ struct SettingsView: View {
                 .background(Color("Color"))
                 .cornerRadius(10)
                 .padding(.top, 25)
+                .accessibilityIdentifier("logoutButton")
             }
         }
         .padding(.horizontal, 15)
