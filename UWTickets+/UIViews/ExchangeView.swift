@@ -11,7 +11,7 @@ struct ExchangeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: OffersView(currentOffers: offers)) {
+                NavigationLink(destination: OffersView(currentOffers: [])) {
                     
                     Button("Go to Current Offers Area") {
                         

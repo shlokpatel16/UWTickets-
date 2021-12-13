@@ -16,13 +16,14 @@ struct ExchangeView2: View {
     @State var filterSellers = ["Choose Seller", "Shlok", "Jake", "Chris", "sampleuser1", "sampleruser2"]
     @State private var filterSeller = "Choose Seller"
     @State private var price: String = ""
+    @State var buyer: String = ""
 
     var body: some View {
         VStack {
             NavigationView {
                 VStack{
                     HStack {
-                        NavigationLink(destination: OffersView(currentOffers: offers)) {
+                        NavigationLink(destination: OffersView(currentOffers: [])) {
                             Capsule()
                                 .fill(Color.red)
                                 .frame(width: 200, height: 100)
@@ -118,18 +119,18 @@ struct ExchangeView2: View {
         }
     }
     func sendOffer() {
-//        var offers = [String]()
         db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
             let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
             for user in users {
                 if user.value["name"] as! String == filterSeller {
-                    let uid = Auth.auth().currentUser!.uid;
-//                    if snapshot.hasChild("Users/" + uid + "/" + filterSeller + "/CurrentOffers") {
-                        let buyer = db.child("Users").child(uid).child("name")
-                        db.child("Users/" + uid + "/CurrentOffers").childByAutoId().setValue(["logo": filterGame, "price": price, "other person": buyer])
-//                    } else {
-//                        db.child("Users/")
-//                    }
+                    let uid = Auth.auth().currentUser!.uid
+                    let seller = user.key
+                    for user in users {
+                        if user.key == uid {
+                            buyer = user.value["name"] as! String
+                        }
+                    }
+                        db.child("Users/" + seller + "/CurrentOffers").childByAutoId().setValue(["logo": filterGame, "price": price, "other person": buyer])
                 }
             }
         }
