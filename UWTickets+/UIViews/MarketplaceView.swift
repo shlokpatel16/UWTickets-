@@ -12,6 +12,7 @@ struct MarketplaceView: View {
     var filterGames = ["All", "Penn State", "Eastern MI", "Notre Dame", "Michigan", "Illinois", "Army", "Purdue", "Iowa", "Rutgers", "Northwestern", "Nebraska", "Minnesota"]
     @State private var filterGame = "All"
     @State var listings: [Listing]? = []
+        
     
     var body: some View {
         let filteredListings = listings!.filter { listing in
@@ -20,6 +21,7 @@ struct MarketplaceView: View {
             }
             return listing.game == filterGame
         }
+
 
         VStack{
             HStack {
@@ -38,6 +40,7 @@ struct MarketplaceView: View {
                     Listing in MarketplaceListing(itemForSale: Listing)
                 }
             }
+            .accessibility(identifier: "marketTable")
         }.onAppear() {
             self.getMarketplace()
         }

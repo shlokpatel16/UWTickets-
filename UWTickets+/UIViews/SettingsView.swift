@@ -110,6 +110,7 @@ struct SettingsView: View {
                 .background(Color("Color"))
                 .cornerRadius(10)
                 .padding(.top, 25)
+                .accessibilityIdentifier("logoutButton")
             }
         }
         .padding(.horizontal, 15)

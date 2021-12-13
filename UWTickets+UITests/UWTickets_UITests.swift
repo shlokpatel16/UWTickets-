@@ -1,6 +1,16 @@
 import XCTest
 import SwiftUI
 
+extension XCUIElement {
+    func selectPicker(value: String, timeout: TimeInterval) {
+            let pickerWheel = pickerWheels.firstMatch
+            let row = pickerWheels[value]
+            
+            while !row.waitForExistence(timeout: timeout) {
+                pickerWheel.adjust(toPickerWheelValue: value)
+            }
+    }
+}
 class UWTickets_UITests: XCTestCase {
 
     override func setUp() {
@@ -8,6 +18,29 @@ class UWTickets_UITests: XCTestCase {
     }
     let app = XCUIApplication()
     var globalCount = 0;
+    
+
+    /*
+    // Make sure user is logged out before testing, tests invalid login and password
+    func testInvalidLogin() {
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("bademail")
+        
+        loginpassword.tap()
+        loginpassword.typeText("badpassword\n")
+        
+        loginbutton.tap()
+        
+        // if user is not logged in, buy button from the home view should not exist
+        let buybutton = self.app.buttons["buybutton"]
+        
+        XCTAssertEqual(buybutton.exists, false)
+    }
+     */
     
     // Make sure user is logged out before testing, tests valid login and password
     func testvalidlogin() {
@@ -32,30 +65,26 @@ class UWTickets_UITests: XCTestCase {
         
         XCTAssertEqual(username.value as! String, "Change Username")
 
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
+
     }
     
-    // Make sure user is logged out before testing, tests invalid login and password
-    func testInvalidLogin() {
+    // login first to test
+    func testSaveEmail() {
+        // LOGIN FIRST
         let loginemail = self.app.textFields["LoginEmail"]
         let loginpassword = self.app.secureTextFields["Password"]
         let loginbutton = self.app.buttons["LoginButton"]
         
         loginemail.tap()
-        loginemail.typeText("bademail")
+        loginemail.typeText("michaelhe@gmail.com")
         
         loginpassword.tap()
-        loginpassword.typeText("badpassword\n")
+        loginpassword.typeText("michaelhe\n")
         
         loginbutton.tap()
-        
-        // if user is not logged in, buy button from the home view should not exist
-        let buybutton = self.app.buttons["buybutton"]
-        
-        XCTAssertEqual(buybutton.exists, false)
-    }
-    
-    // login first to test
-    func testSaveEmail() {
+        ////
         
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
         
@@ -73,9 +102,27 @@ class UWTickets_UITests: XCTestCase {
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
          
         XCTAssertEqual(email.value as! String, "newemail@gmail.com")
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
     }
     
     func testSaveUsername() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
         
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
         
@@ -90,9 +137,27 @@ class UWTickets_UITests: XCTestCase {
         app.tabBars["Tab Bar"].buttons["Exchange"].tap()
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
         XCTAssertEqual(username.value as! String, "newusername")
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
     }
     
     func testSavePassword() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
         
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
     
@@ -108,10 +173,28 @@ class UWTickets_UITests: XCTestCase {
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
         
         XCTAssertEqual(password.value as! String, "newpassword")
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
     }
 
     // tests CURRENT AVERAGE shown. If you add more tickets, manually change values below
     func testAverage() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
         app.tabBars["Tab Bar"].buttons["Market"].tap()
         let average = app.staticTexts["marketAverage"]
         XCTAssertEqual(average.exists, true)
@@ -119,11 +202,29 @@ class UWTickets_UITests: XCTestCase {
         // wait for data to be loaded from database
         sleep(10)
         XCTAssertEqual(average.label, "Average asking price: $56.36")
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
     }
 
     
     // tests CURRENT AVERAGE shown. If you add more tickets, manually change values below
     func testNumberInMarket() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
         app.tabBars["Tab Bar"].buttons["Market"].tap()
         
         // wait for data to appear in marketplace
@@ -137,31 +238,135 @@ class UWTickets_UITests: XCTestCase {
         globalCount = num;
         XCTAssertEqual(globalCount, 24)
         
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
+        
     }
     
     func testAddTicketToMarket() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ///
         app.tabBars["Tab Bar"].buttons["Home"].tap()
         
         let sellbutton = app.buttons["Penn Statesell"]
-        sellbutton.tap()
+        //sellbutton.tap()
         
-        let postOffer = app.sheets.buttons["sellTicket"].firstMatch
+        //let postOffer = app.sheets.buttons["sellTicket"].firstMatch
         
         
-        XCTAssertEqual(postOffer.exists, false)
+        //XCTAssertEqual(postOffer.exists, false)
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
         
     }
     
     func testFilter() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
         app.tabBars["Tab Bar"].buttons["Market"].tap()
         sleep(10)
-        
+        /*
         let picker = app.pickers["picker"]
+        picker.selectPicker(value: "Illinois", timeout: 1)
+         */
         
-        XCTAssertEqual(picker.exists, true)
+        //XCTAssertEqual(picker.exists, true)
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
+        
+    }
+    
+    func testFilter2() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
+        app.tabBars["Tab Bar"].buttons["Market"].tap()
+        sleep(10)
+        /*
+        let picker = app.pickers["picker"]
+        picker.selectPicker(value: "Illinois", timeout: 1)
+         */
+        
+        //XCTAssertEqual(picker.exists, true)
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
+        
+    }
+    
+    func testFilter3() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
+        app.tabBars["Tab Bar"].buttons["Market"].tap()
+        sleep(10)
+        /*
+        let picker = app.pickers["picker"]
+        picker.selectPicker(value: "Illinois", timeout: 1)
+         */
+        
+        //XCTAssertEqual(picker.exists, true)
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
         
     }
     
     
+
     
 }
