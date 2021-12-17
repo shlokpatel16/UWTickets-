@@ -40,7 +40,7 @@ struct OffersView: View {
             let uid = Auth.auth().currentUser!.uid
             for user in users {
                 if user.key == uid {
-                    var path = "Users/" + uid + "/CurrentOffers"
+                    let path = "Users/" + uid + "/CurrentOffers"
                     print(path)
                     ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
                         print("here the snap")
@@ -49,7 +49,7 @@ struct OffersView: View {
                         for singleOffer in offers {
                             print("thisis a single offer")
                             print(singleOffer)
-                            var realLogo = nameToLogo[singleOffer.value["logo"] as! String]
+                            let realLogo = nameToLogo[singleOffer.value["logo"] as! String]
                             offerSet.append(
                                 offer(
                                     id: singleOffer.key,
@@ -64,12 +64,8 @@ struct OffersView: View {
                         self.currentOffers = offerSet
                     }
                 }
-//                print("past users")
             }
         }
-//        print("current offers heree")
-//        print(offerSet)
-//        self.currentOffers = offerSet
     }
     struct currentListRow: View {
         let logoToName:[String:String] = ["PennLogo": "Penn State", "EasternLogo": "Eastern MI", "NDLogo": "Notre Dame", "MichLogo" : "Michigan", "IllinoisLogo": "Illinois", "ArmyLogo" : "Army", "PurdueLogo": "Purdue", "IowaLogo": "Iowa", "RLogo": "Rutgers", "NorthwesternLogo": "Northwestern", "NebraskaLogo": "Nebraska", "MinnesotaLogo": "Minnesota"]
@@ -100,42 +96,33 @@ struct OffersView: View {
                                 }
                             }
                             for user in users {
-                                let uid = Auth.auth().currentUser!.uid
+                                _ = Auth.auth().currentUser!.uid
                                 print("ooooooga")
                                 let other = user.value["name"] as! String
                                 let buyer = user.key
                                 if other == eachOffer.otherPerson {
                                     db.child("Users/" + buyer + "/history").childByAutoId().setValue(["logo": eachOffer.logo, "price": eachOffer.price, "other person": eachOffer.otherPerson, "bought": 1])
                                 }
-//                                if user.key == seller {
-//                                    db.child("Users/" + seller + "/history").childByAutoId().setValue(["logo": eachOffer.logo, "price": eachOffer.price, "other person": eachOffer.otherPerson, "bought": false])
-//                                }
                             }
                         }
                         
-                        var offerSet = [offer]()
+                        _ = [offer]()
                         let ref = Database.database().reference()
                         ref.child("Users").observeSingleEvent(of: .value) { (snapshot) in
                             let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
                             let uid = Auth.auth().currentUser!.uid
                             for user in users {
                                 if user.key == uid {
-                                    var path = "Users/" + uid + "/CurrentOffers/" + eachOffer.id
+                                    let path = "Users/" + uid + "/CurrentOffers/" + eachOffer.id
                                     print(path)
                                     ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
                                         print("here the snap")
                                         print(snapshot)
                                     }
                                     ref.child(path).removeValue()
-//                                    OffersView()
-//                                    getOffers()
                                 }
-                //                print("past users")
                             }
                         }
-                //        print("current offers heree")
-                //        print(offerSet)
-                //        self.currentOffers = offerSet
                     }
                     print("Accepted")
                     let ticket = String(logoToName[eachOffer.logo]!)
@@ -159,29 +146,23 @@ struct OffersView: View {
                 Button("Decline") {
                     withAnimation{
                         print(eachOffer.id)
-                        var offerSet = [offer]()
+                        _ = [offer]()
                         let ref = Database.database().reference()
                         ref.child("Users").observeSingleEvent(of: .value) { (snapshot) in
                             let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
                             let uid = Auth.auth().currentUser!.uid
                             for user in users {
                                 if user.key == uid {
-                                    var path = "Users/" + uid + "/CurrentOffers/" + eachOffer.id
+                                    let path = "Users/" + uid + "/CurrentOffers/" + eachOffer.id
                                     print(path)
                                     ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
                                         print("here the snap")
                                         print(snapshot)
                                     }
                                     ref.child(path).removeValue()
-//                                    OffersView()
-//                                    getOffers()
                                 }
-                //                print("past users")
                             }
                         }
-                //        print("current offers heree")
-                //        print(offerSet)
-                //        self.currentOffers = offerSet
                         
                     }
                     print("Declined")
@@ -217,13 +198,6 @@ struct offer: Identifiable {
     var price : String
     var otherPerson : String
 }
-//let offers = [
-//    offer(id : 1, logo: "PennLogo", price: "30.00", otherPerson: "testsellername"),
-//    offer(id : 2, logo: "MichLogo", price: "25.00", otherPerson: "cgeorge22@gmail.com"),
-//    offer(id : 3, logo: "NorthwesternLogo", price: "40.00", otherPerson: "shlok16patel@gmail.com"),
-//    offer(id : 4, logo: "PurdueLogo", price: "40.00", otherPerson: "anotherchris@gmail.com"),
-//    offer(id : 5, logo: "IllinoisLogo", price: "40.00", otherPerson: "testsellername"),
-//    offer(id : 6, logo: "NebraskaLogo", price: "45.00", otherPerson: "testsellername")]
 
 struct OffersView_Previews: PreviewProvider {
     static var previews: some View {

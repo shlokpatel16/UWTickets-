@@ -35,7 +35,7 @@ struct HistoryView: View {
             let uid = Auth.auth().currentUser!.uid
             for user in users {
                 if user.key == uid {
-                    var path = "Users/" + uid + "/history"
+                    let path = "Users/" + uid + "/history"
                     print(path)
                     ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
                         print("here the snap")
@@ -98,13 +98,6 @@ struct oldOffer: Identifiable {
     var bought : Int
 }
 
-//let oldOffers = [
-//    oldOffer(id : 1, logo: "PennLogo", price: "30.00", otherPerson: "testsellername", bought: true),
-//    oldOffer(id : 2, logo: "MichLogo", price: "25.00", otherPerson: "cgeorge22@gmail.com", bought: false),
-//    oldOffer(id : 3, logo: "NorthwesternLogo", price: "40.00", otherPerson: "shlok16patel@gmail.com", bought: true),
-//    oldOffer(id : 4, logo: "PurdueLogo", price: "40.00", otherPerson: "anotherchris@gmail.com", bought: false),
-//    oldOffer(id : 5, logo: "IllinoisLogo", price: "40.00", otherPerson: "testsellername", bought: false),
-//    oldOffer(id : 6, logo: "NebraskaLogo", price: "45.00", otherPerson: "testsellername", bought: true)]
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
