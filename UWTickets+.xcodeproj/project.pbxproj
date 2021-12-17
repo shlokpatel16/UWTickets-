@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3F3052262734F25000F8E772 /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3052252734F24F00F8E772 /* MarketplaceView.swift */; };
 		3FEAD0E92735C77A00D3DCF6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEAD0E82735C77A00D3DCF6 /* SettingsView.swift */; };
-		54D060CB2734C5A90035D795 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D060CA2734C5A90035D795 /* ExchangeView.swift */; };
 		54D060CD2734CC0A0035D795 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D060CC2734CC0A0035D795 /* HistoryView.swift */; };
 		54D060CF2734CC180035D795 /* OffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D060CE2734CC180035D795 /* OffersView.swift */; };
 		660C32C127487D8900D6C040 /* ExchangeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C32C027487D8900D6C040 /* ExchangeView2.swift */; };
@@ -49,7 +48,6 @@
 		2CCCB5E25E8B00D31ED7D493 /* Pods-UWTickets+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UWTickets+.release.xcconfig"; path = "Target Support Files/Pods-UWTickets+/Pods-UWTickets+.release.xcconfig"; sourceTree = "<group>"; };
 		3F3052252734F24F00F8E772 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
 		3FEAD0E82735C77A00D3DCF6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		54D060CA2734C5A90035D795 /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
 		54D060CC2734CC0A0035D795 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		54D060CE2734CC180035D795 /* OffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersView.swift; sourceTree = "<group>"; };
 		660C32C027487D8900D6C040 /* ExchangeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView2.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				DDFEF5A52730915400F3FF10 /* ContentView.swift */,
-				54D060CA2734C5A90035D795 /* ExchangeView.swift */,
 				54D060CC2734CC0A0035D795 /* HistoryView.swift */,
 				54D060CE2734CC180035D795 /* OffersView.swift */,
 				66A541CF27346B3F0054CA53 /* PersonalHomeView.swift */,
@@ -399,7 +396,6 @@
 				660C32C127487D8900D6C040 /* ExchangeView2.swift in Sources */,
 				DDFEF5A62730915400F3FF10 /* ContentView.swift in Sources */,
 				54D060CD2734CC0A0035D795 /* HistoryView.swift in Sources */,
-				54D060CB2734C5A90035D795 /* ExchangeView.swift in Sources */,
 				66A541D027346B3F0054CA53 /* PersonalHomeView.swift in Sources */,
 				66A541D62735F9C20054CA53 /* ChatView.swift in Sources */,
 				3F3052262734F25000F8E772 /* MarketplaceView.swift in Sources */,

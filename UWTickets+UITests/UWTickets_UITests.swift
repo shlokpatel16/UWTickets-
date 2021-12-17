@@ -261,7 +261,7 @@ class UWTickets_UITests: XCTestCase {
         ///
         app.tabBars["Tab Bar"].buttons["Home"].tap()
         
-        let sellbutton = app.buttons["Penn Statesell"]
+//        let sellbutton = app.buttons["Penn Statesell"]
         //sellbutton.tap()
         
         //let postOffer = app.sheets.buttons["sellTicket"].firstMatch
