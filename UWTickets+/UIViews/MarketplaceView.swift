@@ -52,17 +52,19 @@ struct MarketplaceView: View {
         var listingSet = [Listing]()
         let ref = Database.database().reference()
         ref.child("Marketplace").observeSingleEvent(of: .value) { (snapshot) in
-            let marketplace: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-            for listing in marketplace {
-                listingSet.append(
-                    Listing(
-                        id: listing.key,
-                        sellername: listing.value["sellername"] as! String,
-                        game: listing.value["game"] as! String,
-                        logo: listing.value["logo"] as! String,
-                        askingPrice: listing.value["askingPrice"] as! String
+            if snapshot.exists() {
+                let marketplace: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                for listing in marketplace {
+                    listingSet.append(
+                        Listing(
+                            id: listing.key,
+                            sellername: listing.value["sellername"] as! String,
+                            game: listing.value["game"] as! String,
+                            logo: listing.value["logo"] as! String,
+                            askingPrice: listing.value["askingPrice"] as! String
+                        )
                     )
-                )
+                }
             }
             self.listings = listingSet
 
