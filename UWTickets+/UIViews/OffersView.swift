@@ -12,11 +12,6 @@ import FirebaseAuth
 struct OffersView: View {
     @State var currentOffers : [offer]? = []
     let nameToLogo:[String:String] = ["Penn State": "PennLogo", "Eastern MI": "EasternLogo", "Notre Dame": "NDLogo", "Michigan" : "MichLogo", "Illinois": "IllinoisLogo", "Army" : "ArmyLogo", "Purdue": "PurdueLogo", "Iowa": "IowaLogo", "Rutgers": "RLogo", "Northwestern": "NorthwesternLogo", "Nebraska": "NebraskaLogo", "Minnesota": "MinnesotaLogo"]
-    
-    
-    let logoToName:[String:String] = ["PennLogo": "Penn State", "EasternLogo": "Eastern MI", "NDLogo": "Notre Dame", "MichLogo" : "Michigan", "IllinoisLogo": "Illinois", "ArmyLogo" : "Army", "PurdueLogo": "Purdue", "IowaLogo": "Iowa", "RLogo": "Rutgers", "NorthwesternLogo": "Northwestern", "NebraskaLogo": "Nebraska", "MinnesotaLogo": "Minnesota"]
-    
-    
     var body: some View {
     NavigationView {
         VStack {
