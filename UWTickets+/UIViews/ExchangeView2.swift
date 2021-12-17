@@ -88,7 +88,44 @@ struct ExchangeView2: View {
                         print(filterGame)
                         print(filterSeller)
                         print(price)
-                        self.sendOffer()
+                        if filterGame == "Choose Game" {
+                            let error = UIAlertController(title: "Invalid Game", message: "Please choose a Game for which you would like to make an offer!", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                                
+                            }
+                            error.addAction(ok)
+                            UIApplication.shared.windows.first?.rootViewController?.present(error, animated: true, completion: {
+                                
+                            })
+                        } else if filterSeller == "Choose Seller" {
+                            let error = UIAlertController(title: "Invalid Seller", message: "Please choose a Seller for which you would like to make an offer!", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                                
+                            }
+                            error.addAction(ok)
+                            UIApplication.shared.windows.first?.rootViewController?.present(error, animated: true, completion: {
+                                
+                            })
+                        } else if (Int(price) == nil || Int(price)! < 0 || Int(price)! > 500) {
+                            let error = UIAlertController(title: "Invalid Offer Price", message: "Please try again and enter a numerical value between 0 and 500!", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                                
+                            }
+                            error.addAction(ok)
+                            UIApplication.shared.windows.first?.rootViewController?.present(error, animated: true, completion: {
+                                
+                            })
+                        } else {
+                            self.sendOffer()
+                            let success = UIAlertController(title: "Successfully Sent Offer", message: "Your offer for a " + filterGame + " Ticket was successfully sent to " + filterSeller + " for a price of $" + price + "!", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                                
+                            }
+                            success.addAction(ok)
+                            UIApplication.shared.windows.first?.rootViewController?.present(success, animated: true, completion: {
+                                
+                            })
+                        }
                     }
                     .foregroundColor(.white)
                     .font(.title2)
@@ -109,10 +146,13 @@ struct ExchangeView2: View {
         var sellers = [String]()
         db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
             let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+            let uid = Auth.auth().currentUser!.uid
             for user in users {
-                sellers.append(
-                    user.value["name"] as! String
-                )
+                if user.key != uid {
+                    sellers.append(
+                        user.value["name"] as! String
+                    )
+                }
             }
             filterSellers = sellers
         }

@@ -13,6 +13,8 @@ let database = Database.database().reference()
 
 struct PersonalHomeView: View {
     var gamesToPlay: [game]
+//    @Binding var selection = 3
+//    self.selection = 2
     var body: some View {
         List(gamesToPlay) {
             game in ChatListRow(eachGame: game)
@@ -27,7 +29,7 @@ struct ChatListRow: View {
     @State var customAlert = false
     @State var dollars = ""
     @State private var showingSheet = false
-    
+//    @Binding var selection: Int
     var body: some View {
         HStack {
             Image(eachGame.logo)
@@ -38,6 +40,9 @@ struct ChatListRow: View {
             Spacer()
             Button("Buy") {
                 withAnimation{
+//                    print(TabBarView().selection)
+//                    TabBarView().selection = 4
+//                    print(TabBarView().selection)
                     buy()
                 }
                 showingSheet.toggle()
@@ -52,9 +57,9 @@ struct ChatListRow: View {
                     .stroke(Color.green, lineWidth: 1.0)
             )
             .accessibility(identifier: eachGame.name + "buy")
-            .sheet(isPresented: $showingSheet) {
-                MarketplaceView(listings: [])
-            }
+//            .sheet(isPresented: $showingSheet) {
+//                MarketplaceView(listings: [])
+//            }
             
             Button("Sell") {
                 withAnimation{
@@ -74,14 +79,34 @@ struct ChatListRow: View {
         }
     }
     func sell(){
-        let alert = UIAlertController(title: "Sell Ticket", message: "Please enter the dollar amount you are selling this ticket for: $", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Sell Ticket", message: "Please enter the dollar amount (between 0 and 500) you are selling this ticket for: $", preferredStyle: .alert)
         alert.addTextField {(dollars) in
             dollars.placeholder = "ex. \"50\""
             
         }
         let sell = UIAlertAction(title: "Post Offer", style: .default) { _ in
             dollars = alert.textFields![0].text!
-            database.child("Marketplace").childByAutoId().setValue(["sellername": Auth.auth().currentUser?.email! ?? "", "game": eachGame.name, "logo": eachGame.logo, "askingPrice": dollars])
+            if Int(dollars) != nil && Int(dollars)! >= 0 && Int(dollars)! <= 500{
+                database.child("Marketplace").childByAutoId().setValue(["sellername": Auth.auth().currentUser?.email! ?? "", "game": eachGame.name, "logo": eachGame.logo, "askingPrice": dollars])
+                let success = UIAlertController(title: "Successfully Posted", message: "Your " + eachGame.name + "Ticket was successfully posted to our Market Place for an asking price of $" + dollars + "!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                    
+                }
+                success.addAction(ok)
+                UIApplication.shared.windows.first?.rootViewController?.present(success, animated: true, completion: {
+                    
+                })
+            } else {
+                let error = UIAlertController(title: "Invalid Asking Price", message: "Please try again and enter a numerical value between 0 and 500!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                    
+                }
+                error.addAction(ok)
+                UIApplication.shared.windows.first?.rootViewController?.present(error, animated: true, completion: {
+                    
+                })
+            }
+
         }
         let cancel = UIAlertAction(title: "Cancel", style: .destructive) { _ in
             
@@ -95,7 +120,8 @@ struct ChatListRow: View {
 
     }
     func buy(){
-        MarketplaceView(listings: [])
+//        TabBarView().selection = 4
+//        MarketplaceView(listings: [])
     }
 }
 

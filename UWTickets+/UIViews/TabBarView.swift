@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @State var selection = 0
     var body: some View {
         let games = [
             game(id: 1, name: "Penn State", logo: "PennLogo"),
@@ -25,32 +26,32 @@ struct TabBarView: View {
         ]
         
         
-        TabView {
+        TabView (selection: $selection){
             PersonalHomeView(gamesToPlay: games)
                 .tabItem{
                     Image(systemName: "house")
                     Text("Home")
-                }
+                }.tag(0)
             MarketplaceView(listings: [])
                 .tabItem{
                     Image(systemName: "cart")
                     Text("Market")
-                }
+                }.tag(1)
             ChatView()
                 .tabItem{
                     Image(systemName: "message")
                     Text("Chat")
-                }
+                }.tag(2)
             ExchangeView2()
                 .tabItem{
                     Image(systemName: "arrow.left.arrow.right.circle")
                     Text("Exchange")
-                }
+                }.tag(3)
             SettingsView()
                 .tabItem{
                     Image(systemName: "gear")
                     Text("Settings")
-                }
+                }.tag(4)
         }.accentColor(.red)
     }
 }
