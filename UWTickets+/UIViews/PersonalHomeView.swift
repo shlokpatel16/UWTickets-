@@ -29,7 +29,9 @@ struct ChatListRow: View {
     @State var customAlert = false
     @State var dollars = ""
     @State private var showingSheet = false
+    let nameToName:[String:String] = ["Penn State": "Penn State", "Eastern MI": "Eastern MI", "Notre Dame": "Notre Dame", "Michigan" : "Michigan", "@Illinois": "Illinois", "Army" : "Army", "@Purdue": "Purdue", "Iowa": "Iowa", "@Rutgers": "Rutgers", "Northwestern": "Northwestern", "Nebraska": "Nebraska", "@Minnesota": "Minnesota"]
 //    @Binding var selection: Int
+    
     var body: some View {
         HStack {
             Image(eachGame.logo)
@@ -57,9 +59,9 @@ struct ChatListRow: View {
                     .stroke(Color.green, lineWidth: 1.0)
             )
             .accessibility(identifier: eachGame.name + "buy")
-//            .sheet(isPresented: $showingSheet) {
-//                MarketplaceView(listings: [])
-//            }
+            .sheet(isPresented: $showingSheet) {
+                MarketplaceView(listings: [])
+            }
             
             Button("Sell") {
                 withAnimation{
@@ -87,7 +89,18 @@ struct ChatListRow: View {
         let sell = UIAlertAction(title: "Post Offer", style: .default) { _ in
             dollars = alert.textFields![0].text!
             if Int(dollars) != nil && Int(dollars)! >= 0 && Int(dollars)! <= 500{
-                database.child("Marketplace").childByAutoId().setValue(["sellername": Auth.auth().currentUser?.email! ?? "", "game": eachGame.name, "logo": eachGame.logo, "askingPrice": dollars])
+                db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+                    let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                    let uid = Auth.auth().currentUser!.uid
+                    for user in users {
+                        if user.key == uid {
+                            let userName =  user.value["name"] as! String
+                            print(userName)
+                            let realName = nameToName[eachGame.name]
+                            database.child("Marketplace").childByAutoId().setValue(["sellername": userName, "game": realName, "logo": eachGame.logo, "askingPrice": dollars])
+                        }
+                    }
+                }
                 let success = UIAlertController(title: "Successfully Posted", message: "Your " + eachGame.name + "Ticket was successfully posted to our Market Place for an asking price of $" + dollars + "!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
                     
@@ -121,7 +134,7 @@ struct ChatListRow: View {
     }
     func buy(){
 //        TabBarView().selection = 4
-//        MarketplaceView(listings: [])
+        MarketplaceView(listings: [])
     }
 }
 
