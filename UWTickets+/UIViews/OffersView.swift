@@ -40,19 +40,21 @@ struct OffersView: View {
                     ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
                         print("here the snap")
                         print(snapshot)
-                        let offers: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-                        for singleOffer in offers {
-                            print("thisis a single offer")
-                            print(singleOffer)
-                            let realLogo = nameToLogo[singleOffer.value["logo"] as! String]
-                            offerSet.append(
-                                offer(
-                                    id: singleOffer.key,
-                                    logo: realLogo!,
-                                    price: singleOffer.value["price"] as! String,
-                                    otherPerson: singleOffer.value["other person"] as! String
+                        if snapshot.exists() {
+                            let offers: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                            for singleOffer in offers {
+                                print("thisis a single offer")
+                                print(singleOffer)
+                                let realLogo = nameToLogo[singleOffer.value["logo"] as! String]
+                                offerSet.append(
+                                    offer(
+                                        id: singleOffer.key,
+                                        logo: realLogo!,
+                                        price: singleOffer.value["price"] as! String,
+                                        otherPerson: singleOffer.value["other person"] as! String
+                                    )
                                 )
-                            )
+                            }
                         }
                         print("current offers heree")
                         print(offerSet)

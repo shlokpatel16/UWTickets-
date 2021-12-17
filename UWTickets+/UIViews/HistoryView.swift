@@ -40,19 +40,21 @@ struct HistoryView: View {
                     ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
                         print("here the snap")
                         print(snapshot)
-                        let offers: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-                        for singleOffer in offers {
-                            print("thisis a single offer")
-                            print(singleOffer)
-                            historySet.append(
-                                oldOffer(
-                                    id: singleOffer.key,
-                                    logo: singleOffer.value["logo"] as! String,
-                                    price: singleOffer.value["price"] as! String,
-                                    otherPerson: singleOffer.value["other person"] as! String,
-                                    bought: singleOffer.value["bought"] as! Int
+                        if snapshot.exists() {
+                            let offers: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                            for singleOffer in offers {
+                                print("thisis a single offer")
+                                print(singleOffer)
+                                historySet.append(
+                                    oldOffer(
+                                        id: singleOffer.key,
+                                        logo: singleOffer.value["logo"] as! String,
+                                        price: singleOffer.value["price"] as! String,
+                                        otherPerson: singleOffer.value["other person"] as! String,
+                                        bought: singleOffer.value["bought"] as! Int
+                                    )
                                 )
-                            )
+                            }
                         }
                         print("current offers heree")
                         print(historySet)
