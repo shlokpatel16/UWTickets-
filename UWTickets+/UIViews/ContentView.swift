@@ -393,7 +393,7 @@ struct SignUp : View {
         
         if self.email != "" {
             
-            if self.phone.count == 10 {
+            if self.phone.count == 10 && Int(self.phone) != nil{
                 
                 if self.pass == self.repass {
                     
