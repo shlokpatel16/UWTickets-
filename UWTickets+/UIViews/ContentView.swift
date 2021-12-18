@@ -390,34 +390,41 @@ struct SignUp : View {
     }
     
     func register() {
-//        let database = Database.database().reference()
         
         if self.email != "" {
             
-            if self.pass == self.repass {
+            if self.phone.count == 10 {
                 
-                Auth.auth().createUser(withEmail: self.email, password: self.pass) { (res, err) in
-
-                    if err != nil {
-
-                        self.error = err!.localizedDescription
-                        self.alert.toggle()
-                        return
-                    }
-                    var ticketList : [String] = []
-                    if self.hasTickets {
-                        ticketList = ["Penn State", "Eastern MI", "Notre Dame", "Michigan", "Army", "Iowa", "Northwestern", "Nebraska"]
-                    }
-                    database.child("Users/" + Auth.auth().currentUser!.uid).setValue(["name":  self.name, "phoneNumber": self.phone, "tickets": ticketList])
-                    print("success")
+                if self.pass == self.repass {
                     
-                    UserDefaults.standard.set(true, forKey: "status")
-                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                    Auth.auth().createUser(withEmail: self.email, password: self.pass) { (res, err) in
+
+                        if err != nil {
+
+                            self.error = err!.localizedDescription
+                            self.alert.toggle()
+                            return
+                        }
+                        var ticketList : [String] = []
+                        if self.hasTickets {
+                            ticketList = ["Penn State", "Eastern MI", "Notre Dame", "Michigan", "Army", "Iowa", "Northwestern", "Nebraska"]
+                        }
+                        database.child("Users/" + Auth.auth().currentUser!.uid).setValue(["name":  self.name, "phoneNumber": self.phone, "tickets": ticketList])
+                        print("success")
+                        
+                        UserDefaults.standard.set(true, forKey: "status")
+                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                    }
+                }
+                else {
+                    
+                    self.error = "Passwords don't match"
+                    self.alert.toggle()
                 }
             }
             else {
                 
-                self.error = "Passwords don't match"
+                self.error = "Not a valid phone number"
                 self.alert.toggle()
             }
         }
