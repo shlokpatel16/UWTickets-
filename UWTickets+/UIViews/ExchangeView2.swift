@@ -147,7 +147,7 @@ struct ExchangeView2: View {
         db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.exists() {
                 let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-                let uid = Auth.auth().currentUser!.uid
+                let uid = Auth.auth().currentUser?.uid
                 for user in users {
                     if user.key != uid {
                         sellers.append(
