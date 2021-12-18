@@ -89,30 +89,37 @@ func getAveragePrice(listings: [Listing]) -> Double {
 struct MarketplaceListing: View {
     var itemForSale: Listing
     var body: some View {
-        HStack {
-            Image(itemForSale.logo)
-                .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: 30, maxHeight: 30)
-//            Text(itemForSale.game)
-//            Spacer()
-            Text(itemForSale.sellername).font(.system(size: 15.0))
-            Spacer()
-            let askingPriceDouble = Double(itemForSale.askingPrice)
-            Text("\(askingPriceDouble!, specifier: "$%.2f")")
-            Spacer()
-            Button("Message") {
+        VStack {
+            HStack {
                 
             }
-            .accentColor(.blue)
-            .padding(.horizontal, 15)
-            .padding(.vertical, 5)
-            .background(
-                Capsule()
-                    .stroke(Color.blue, lineWidth: 1.0)
-            )
+            HStack {
+                Image(itemForSale.logo)
+                    .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 40, maxHeight: 40)
+    //            Text(itemForSale.game)
+                Spacer()
+                Text(itemForSale.sellername).font(.system(size: 15.0))
+//                Spacer()
+            }
+//            .padding(.vertical, 15)
+            HStack {
+                let askingPriceDouble = Double(itemForSale.askingPrice)
+                Text("\(askingPriceDouble!, specifier: "$%.2f")")
+                Spacer()
+                Button("Message") {
+                    
+                }
+                .accentColor(.blue)
+                .padding(.horizontal, 15)
+                .padding(.vertical, 5)
+                .background(
+                    Capsule()
+                        .stroke(Color.blue, lineWidth: 1.0)
+                )
+            }
         }
-        .padding(.vertical, 15)
     }
 }
 
