@@ -34,6 +34,7 @@ struct ExchangeView2: View {
                                         .foregroundColor(.black)
                                 )
                         }
+                        .accessibility(identifier: "currentLink")
                         NavigationLink(destination: HistoryView(oldOffers: [])) {
                             Capsule()
                                 .fill(Color.red)
@@ -83,6 +84,7 @@ struct ExchangeView2: View {
                         TextField("ex. \"50\"", text: $price)
                             .frame(width: 100, height: 25)
                             .textFieldStyle(.roundedBorder)
+                            .accessibility(identifier: "ExchangePrice")
                     }.padding(.horizontal, 75)
                     Button("Send Offer"){
                         print(filterGame)
@@ -90,6 +92,7 @@ struct ExchangeView2: View {
                         print(price)
                         if filterGame == "Choose Game" {
                             let error = UIAlertController(title: "Invalid Game", message: "Please choose a Game for which you would like to make an offer!", preferredStyle: .alert)
+                            error.view.accessibilityIdentifier = "chooseGame"
                             let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
                                 
                             }
@@ -133,6 +136,7 @@ struct ExchangeView2: View {
                     .background(Color.black)
                     .clipShape(Capsule())
                     .padding(.vertical, 50)
+                    .accessibility(identifier: "offerButton")
 
                 }
                 .navigationTitle("Exchange Area")
