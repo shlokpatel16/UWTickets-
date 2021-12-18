@@ -59,13 +59,35 @@ struct SettingsView: View {
                                     if user.key == uid {
                                         for user in users {
                                             if user.key == uid {
+                                                let oldName = user.value["name"] as! String
                                                 db.child("Users/" + uid + "/name").setValue(newUsername)
+                                                
+                                                
+                                                let ref = Database.database().reference()
+                                                ref.child("Marketplace").observeSingleEvent(of: .value) { (snapshot) in
+                                                    print("the market snapshot")
+                                                    print(snapshot)
+                                                    print(oldName)
+                                                    if snapshot.exists() {
+                                                        let market: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+//                                                        let uid = Auth.auth().currentUser!.uid
+                                                        for entry in market {
+                                                            if entry.value["sellername"] as! String == oldName {
+                                                                let path = "Marketplace/" + entry.key + "/sellername"
+                                                                ref.child(path).setValue(newUsername)
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                
+                                                
                                             }
                                         }
                                     }
                                 }
                             }
                         }
+                        
                         let success = UIAlertController(title: "Successfully Changed Username", message: "Your username was changed to " + newUsername + "!", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
                             
@@ -109,7 +131,32 @@ struct SettingsView: View {
                                     if user.key == uid {
                                         for user in users {
                                             if user.key == uid {
+                                                let oldLine = user.value["phoneNumber"] as! String
+                                                let name = user.value["name"] as! String
+
                                                 db.child("Users/" + uid + "/phoneNumber").setValue(newPhone)
+                                                
+                                                
+                                                let ref = Database.database().reference()
+                                                ref.child("Marketplace").observeSingleEvent(of: .value) { (snapshot) in
+                                                    print("the market snapshot")
+                                                    print(snapshot)
+                                                    print(oldLine)
+                                                    if snapshot.exists() {
+                                                        let market: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+//                                                        let uid = Auth.auth().currentUser!.uid
+                                                        for entry in market {
+                                                            if entry.value["sellername"] as! String == name {
+                                                                let path = "Marketplace/" + entry.key + "/phoneNumber"
+                                                                ref.child(path).setValue(newPhone)
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                
+                                                
+                                                
+                                                
                                             }
                                         }
                                     }

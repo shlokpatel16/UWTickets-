@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseDatabase
+import FirebaseAuth
 
 struct MarketplaceView: View {
     var filterGames = ["All", "Penn State", "Eastern MI", "Notre Dame", "Michigan", "Illinois", "Army", "Purdue", "Iowa", "Rutgers", "Northwestern", "Nebraska", "Minnesota"]
@@ -109,7 +110,25 @@ struct MarketplaceListing: View {
                 Text("\(askingPriceDouble!, specifier: "$%.2f")")
                 Spacer()
                 Button("Message") {
-                    
+                    db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+                        if snapshot.exists() {
+                            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                            for user in users {
+                                if user.value["name"] as! String == itemForSale.sellername {
+                                    let userPhone =  user.value["phoneNumber"] as! String
+                                    print(userPhone)
+                                    let success = UIAlertController(title: "Message " + itemForSale.sellername, message: "You may reach " + itemForSale.sellername + " at this phone number: " + userPhone, preferredStyle: .alert)
+                                    let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                                        
+                                    }
+                                    success.addAction(ok)
+                                    UIApplication.shared.windows.first?.rootViewController?.present(success, animated: true, completion: {
+                                        
+                                    })
+                                }
+                            }
+                        }
+                    }
                 }
                 .accentColor(.blue)
                 .padding(.horizontal, 15)
