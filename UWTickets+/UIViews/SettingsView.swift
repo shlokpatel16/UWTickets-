@@ -7,41 +7,83 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseDatabase
+
 
 struct SettingsView: View {
     @State private var saveCardInfo: Bool = false
     @State private var newEmail = ""
     @State private var newUsername = ""
-    @State private var newPassword = ""
+    @State private var newPhone = ""
     @State private var newCardNo = ""
     @State private var newCVV = ""
     
     var body: some View {
         VStack {
+//            HStack {
+//                TextField("Change Email", text: self.$newEmail)
+//                    .autocapitalization(.none)
+//                    .padding()
+//                    .accessibility(identifier: "settingsEmail")
+//                Button("Save") {
+//
+//                }
+//                .accentColor(.blue)
+//                .padding(.horizontal, 15)
+//                .padding(.vertical, 5)
+//                .accessibility(identifier: "saveEmail")
+//                .background(
+//                    Capsule()
+//                        .stroke(Color.blue, lineWidth: 1.0)
+//                )
+//            }
             HStack {
-                TextField("Change Email", text: self.$newEmail)
-                    .autocapitalization(.none)
-                    .padding()
-                    .accessibility(identifier: "settingsEmail")
-                Button("Save") {
-                    
-                }
-                .accentColor(.blue)
-                .padding(.horizontal, 15)
-                .padding(.vertical, 5)
-                .accessibility(identifier: "saveEmail")
-                .background(
-                    Capsule()
-                        .stroke(Color.blue, lineWidth: 1.0)
-                )
-            }
+                Text("Change Credentials")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 35)
+                
+            }.padding(.bottom, 100)
             HStack {
-                TextField("Change Username", text: self.$newUsername)
+                TextField("Enter new Username", text: self.$newUsername)
                     .autocapitalization(.none)
                     .padding()
                     .accessibility(identifier: "settingsUsername")
                 Button("Save") {
-                    
+                    if !newUsername.trimmingCharacters(in: .whitespaces).isEmpty {
+                        db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+                            if snapshot.exists() {
+                                let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                                let uid = Auth.auth().currentUser!.uid
+                                for user in users {
+                                    if user.key == uid {
+                                        for user in users {
+                                            if user.key == uid {
+                                                db.child("Users/" + uid + "/name").setValue(newUsername)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        let success = UIAlertController(title: "Successfully Changed Username", message: "Your username was changed to " + newUsername + "!", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                            
+                        }
+                        success.addAction(ok)
+                        UIApplication.shared.windows.first?.rootViewController?.present(success, animated: true, completion: {
+                            
+                        })
+                    } else {
+                        let error = UIAlertController(title: "Invalid Username", message: "Please try again and enter a username with non whitespace characters in it!", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                            
+                        }
+                        error.addAction(ok)
+                        UIApplication.shared.windows.first?.rootViewController?.present(error, animated: true, completion: {
+                            
+                        })
+                    }
                 }
                 .accentColor(.blue)
                 .padding(.horizontal, 15)
@@ -53,12 +95,46 @@ struct SettingsView: View {
                 )
             }
             HStack {
-                TextField("Change Password", text: self.$newPassword)
+                TextField("Enter new Phone Number", text: self.$newPhone)
                     .autocapitalization(.none)
                     .padding()
                     .accessibility(identifier: "settingsPassword")
                 Button("Save") {
-                    
+                    if newPhone.count == 10 && Int(newPhone) != nil{
+                        db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+                            if snapshot.exists() {
+                                let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                                let uid = Auth.auth().currentUser!.uid
+                                for user in users {
+                                    if user.key == uid {
+                                        for user in users {
+                                            if user.key == uid {
+                                                db.child("Users/" + uid + "/phoneNumber").setValue(newPhone)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        let success = UIAlertController(title: "Successfully Changed Phone Number", message: "Your phone number was changed to " + newPhone, preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                            
+                        }
+                        success.addAction(ok)
+                        UIApplication.shared.windows.first?.rootViewController?.present(success, animated: true, completion: {
+                            
+                        })
+                    } else {
+                        let error = UIAlertController(title: "Invalid Phone Number", message: "Please try again and enter a 10 digit, only numerical, phone number!", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
+                            
+                        }
+                        error.addAction(ok)
+                        UIApplication.shared.windows.first?.rootViewController?.present(error, animated: true, completion: {
+                            
+                        })
+                    }
+
                 }
                 .accentColor(.blue)
                 .padding(.horizontal, 15)
@@ -68,32 +144,32 @@ struct SettingsView: View {
                     Capsule()
                         .stroke(Color.blue, lineWidth: 1.0)
                 )
-            }
-            HStack {
-                TextField("Card No.", text: self.$newCardNo)
-                    .autocapitalization(.none)
-                    .padding()
-                TextField("CVV", text: self.$newCVV)
-                    .autocapitalization(.none)
-                    .frame(width: 40)
-                    .padding()
-                Button("Save") {
-                    
-                }
-                .accentColor(.blue)
-                .padding(.horizontal, 15)
-                .padding(.vertical, 5)
-                .background(
-                    Capsule()
-                        .stroke(Color.blue, lineWidth: 1.0)
-                )
-            }
-            HStack {
-                Toggle(isOn: $saveCardInfo) {
-                Text("Save Card Information:")
-                }
-                .accessibility(identifier: "saveToggle")
-            }
+            }.padding(.bottom, 100)
+//            HStack {
+//                TextField("Card No.", text: self.$newCardNo)
+//                    .autocapitalization(.none)
+//                    .padding()
+//                TextField("CVV", text: self.$newCVV)
+//                    .autocapitalization(.none)
+//                    .frame(width: 40)
+//                    .padding()
+//                Button("Save") {
+//
+//                }
+//                .accentColor(.blue)
+//                .padding(.horizontal, 15)
+//                .padding(.vertical, 5)
+//                .background(
+//                    Capsule()
+//                        .stroke(Color.blue, lineWidth: 1.0)
+//                )
+//            }
+//            HStack {
+//                Toggle(isOn: $saveCardInfo) {
+//                Text("Save Card Information:")
+//                }
+//                .accessibility(identifier: "saveToggle")
+//            }
             HStack {
                 Button(action: {
                     
@@ -114,6 +190,7 @@ struct SettingsView: View {
             }
         }
         .padding(.horizontal, 15)
+        .padding(.bottom, 100)
     }
 }
 
