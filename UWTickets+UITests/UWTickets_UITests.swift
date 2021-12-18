@@ -201,7 +201,7 @@ class UWTickets_UITests: XCTestCase {
         
         // wait for data to be loaded from database
         sleep(10)
-        XCTAssertEqual(average.label, "Average asking price: $56.36")
+        XCTAssertEqual(average.label, "Average asking price: $111.10")
         
         //LOGOUT
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
@@ -233,10 +233,10 @@ class UWTickets_UITests: XCTestCase {
         let count = self.app.tables["marketTable"]
         let num = count.children(matching: .cell).count
         XCTAssertEqual(count.exists, true)
-        XCTAssertEqual(num, 24)
+        XCTAssertEqual(num, 10)
         
         globalCount = num;
-        XCTAssertEqual(globalCount, 24)
+        XCTAssertEqual(globalCount, 10)
         
         //LOGOUT
         app.tabBars["Tab Bar"].buttons["Settings"].tap()
@@ -366,6 +366,118 @@ class UWTickets_UITests: XCTestCase {
         
     }
     
+    func testExchangeField() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
+        app.tabBars["Tab Bar"].buttons["Exchange"].tap()
+        sleep(10)
+        /*
+        let picker = app.pickers["picker"]
+        picker.selectPicker(value: "Illinois", timeout: 1)
+         */
+        
+        //XCTAssertEqual(picker.exists, true)
+        
+        let p = self.app.textFields["ExchangePrice"]
+        p.tap()
+        p.typeText("50\n")
+        //let link = self.app.navigationBars.links["currentLink"]
+        //XCTAssertEqual(link.exists, true)
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
+        
+    }
+    
+    func testExchangeButton() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
+        app.tabBars["Tab Bar"].buttons["Exchange"].tap()
+        sleep(5)
+        /*
+        let picker = app.pickers["picker"]
+        picker.selectPicker(value: "Illinois", timeout: 1)
+         */
+        
+        //XCTAssertEqual(picker.exists, true)
+        let p = self.app.textFields["ExchangePrice"]
+        p.tap()
+        p.typeText("50\n")
+        let send = self.app.buttons["offerButton"]
+        send.tap()
+        XCTAssertEqual(self.app.alerts.element.label, "Invalid Game")
+        
+        let ok = app.alerts["chooseGame"]
+        let button = ok.buttons["Ok"]
+        button.tap()
+        //XCTAssertEqual(link.exists, true)
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
+        
+    }
+    
+    func testCurrent() {
+        // LOGIN FIRST
+        let loginemail = self.app.textFields["LoginEmail"]
+        let loginpassword = self.app.secureTextFields["Password"]
+        let loginbutton = self.app.buttons["LoginButton"]
+        
+        loginemail.tap()
+        loginemail.typeText("michaelhe@gmail.com")
+        
+        loginpassword.tap()
+        loginpassword.typeText("michaelhe\n")
+        
+        loginbutton.tap()
+        ////
+        app.tabBars["Tab Bar"].buttons["Exchange"].tap()
+        sleep(5)
+        /*
+        let picker = app.pickers["picker"]
+        picker.selectPicker(value: "Illinois", timeout: 1)
+         */
+        
+        //XCTAssertEqual(picker.exists, true)
+        
+        //let link = self.app.links["currentLink"]
+        //XCTAssertEqual(link.exists, true)
+        
+        //LOGOUT
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
+        let logout = self.app.buttons["logoutButton"]
+        logout.tap()
+        
+
+        
+        
+    }
     
 
     
