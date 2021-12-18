@@ -145,31 +145,35 @@ struct ExchangeView2: View {
     func getSellerList() {
         var sellers = [String]()
         db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
-            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-            let uid = Auth.auth().currentUser!.uid
-            for user in users {
-                if user.key != uid {
-                    sellers.append(
-                        user.value["name"] as! String
-                    )
+            if snapshot.exists() {
+                let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                let uid = Auth.auth().currentUser!.uid
+                for user in users {
+                    if user.key != uid {
+                        sellers.append(
+                            user.value["name"] as! String
+                        )
+                    }
                 }
+                filterSellers = sellers
             }
-            filterSellers = sellers
         }
     }
     func sendOffer() {
         db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
-            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-            for user in users {
-                if user.value["name"] as! String == filterSeller {
-                    let uid = Auth.auth().currentUser!.uid
-                    let seller = user.key
-                    for user in users {
-                        if user.key == uid {
-                            buyer = user.value["name"] as! String
+            if snapshot.exists() {
+                let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                for user in users {
+                    if user.value["name"] as! String == filterSeller {
+                        let uid = Auth.auth().currentUser!.uid
+                        let seller = user.key
+                        for user in users {
+                            if user.key == uid {
+                                buyer = user.value["name"] as! String
+                            }
                         }
+                            db.child("Users/" + seller + "/CurrentOffers").childByAutoId().setValue(["logo": filterGame, "price": price, "other person": buyer])
                     }
-                        db.child("Users/" + seller + "/CurrentOffers").childByAutoId().setValue(["logo": filterGame, "price": price, "other person": buyer])
                 }
             }
         }

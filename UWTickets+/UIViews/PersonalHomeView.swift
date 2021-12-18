@@ -90,18 +90,20 @@ struct ChatListRow: View {
             dollars = alert.textFields![0].text!
             if Int(dollars) != nil && Int(dollars)! >= 0 && Int(dollars)! <= 500{
                 db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
-                    let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-                    let uid = Auth.auth().currentUser!.uid
-                    for user in users {
-                        if user.key == uid {
-                            let userName =  user.value["name"] as! String
-                            print(userName)
-                            let realName = nameToName[eachGame.name]
-                            database.child("Marketplace").childByAutoId().setValue(["sellername": userName, "game": realName, "logo": eachGame.logo, "askingPrice": dollars])
+                    if snapshot.exists() {
+                        let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                        let uid = Auth.auth().currentUser!.uid
+                        for user in users {
+                            if user.key == uid {
+                                let userName =  user.value["name"] as! String
+                                print(userName)
+                                let realName = nameToName[eachGame.name]
+                                database.child("Marketplace").childByAutoId().setValue(["sellername": userName, "game": realName, "logo": eachGame.logo, "askingPrice": dollars])
+                            }
                         }
                     }
                 }
-                let success = UIAlertController(title: "Successfully Posted", message: "Your " + eachGame.name + "Ticket was successfully posted to our Market Place for an asking price of $" + dollars + "!", preferredStyle: .alert)
+                let success = UIAlertController(title: "Successfully Posted", message: "Your " + eachGame.name + " Ticket was successfully posted to our Market Place for an asking price of $" + dollars + "!", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .destructive) { _ in
                     
                 }

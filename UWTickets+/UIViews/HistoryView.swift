@@ -31,34 +31,36 @@ struct HistoryView: View {
         var historySet = [oldOffer]()
         let ref = Database.database().reference()
         ref.child("Users").observeSingleEvent(of: .value) { (snapshot) in
-            let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-            let uid = Auth.auth().currentUser!.uid
-            for user in users {
-                if user.key == uid {
-                    let path = "Users/" + uid + "/history"
-                    print(path)
-                    ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
-                        print("here the snap")
-                        print(snapshot)
-                        if snapshot.exists() {
-                            let offers: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
-                            for singleOffer in offers {
-                                print("thisis a single offer")
-                                print(singleOffer)
-                                historySet.append(
-                                    oldOffer(
-                                        id: singleOffer.key,
-                                        logo: singleOffer.value["logo"] as! String,
-                                        price: singleOffer.value["price"] as! String,
-                                        otherPerson: singleOffer.value["other person"] as! String,
-                                        bought: singleOffer.value["bought"] as! Int
+            if snapshot.exists() {
+                let users: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                let uid = Auth.auth().currentUser!.uid
+                for user in users {
+                    if user.key == uid {
+                        let path = "Users/" + uid + "/history"
+                        print(path)
+                        ref.child(path).observeSingleEvent(of: .value) { (snapshot) in
+                            print("here the snap")
+                            print(snapshot)
+                            if snapshot.exists() {
+                                let offers: [String: [String:Any]] = snapshot.value as! [String: [String:Any]]
+                                for singleOffer in offers {
+                                    print("thisis a single offer")
+                                    print(singleOffer)
+                                    historySet.append(
+                                        oldOffer(
+                                            id: singleOffer.key,
+                                            logo: singleOffer.value["logo"] as! String,
+                                            price: singleOffer.value["price"] as! String,
+                                            otherPerson: singleOffer.value["other person"] as! String,
+                                            bought: singleOffer.value["bought"] as! Int
+                                        )
                                     )
-                                )
+                                }
                             }
+                            print("current offers heree")
+                            print(historySet)
+                            self.oldOffers = historySet
                         }
-                        print("current offers heree")
-                        print(historySet)
-                        self.oldOffers = historySet
                     }
                 }
             }
